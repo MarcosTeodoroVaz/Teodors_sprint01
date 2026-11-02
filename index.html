@@ -1,0 +1,2796 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>Sprint Comercial — Teodor | Organização Comercial e CRM em até 72h</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Organizamos seu processo comercial em até 72 horas de execução, com um CRM simples, funil de vendas e rotina de follow-up. Investimento único: R$ 1.500.">
+<meta name="theme-color" content="#15171B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<style id="tokens">
+:root {
+  /* Marca — Teodor’s Design System */
+  --td-graphite: #15171B;
+  --td-offwhite: #F3F1EC;
+  --td-blue: #6577F5;
+  --td-gray: #8A8D95;
+  /* Escala do azul-violeta */
+  --td-blue-300: #9AA6F8;
+  --td-blue-400: #8090F7;
+  --td-blue-600: #4F61E0;
+  --td-blue-glow: rgba(101, 119, 245, .35);
+  /* Superfícies e linhas (tema escuro por padrão) */
+  --bg: var(--td-graphite);
+  --surface-1: #1B1E23;
+  --surface-2: #23262D;
+  --line: #2E323A;
+  --text: var(--td-offwhite);
+  --text-muted: var(--td-gray);
+  --accent: var(--td-blue);
+  --on-accent: var(--td-graphite);
+  /* Feedback */
+  --success: #3DD68C;
+  --warning: #F5B84B;
+  --danger: #F26B6B;
+  /* Tipografia */
+  --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --fs-display: clamp(1.8rem, 2.85vw, 2.6rem);
+  --fs-h1: clamp(1.55rem, 2.4vw, 2.25rem);
+  --fs-h2: clamp(1.3rem, 2vw, 1.75rem);
+  --fs-h3: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: .875rem;
+  --fs-label: .75rem;
+  /* Espaço (base 4px) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  /* Forma */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-full: 999px;
+  --cut: 14px; /* O “corte” diagonal, assinatura do T */
+  /* Movimento */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --t-fast: 150ms;
+  --t-base: 240ms;
+  --glow: 0 0 40px var(--td-blue-glow);
+}
+</style>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html {
+  scroll-padding-top: calc(74px + env(safe-area-inset-top, 0px));
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 400 var(--fs-body)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  color: var(--text);
+}
+.title-accent {
+  color: var(--accent);
+}
+p {
+  max-width: 64ch;
+  color: var(--text-muted);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Skip Link (Acessibilidade) */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: var(--sp-5);
+  z-index: 1000;
+  background: var(--accent);
+  color: var(--on-accent);
+  font: 600 var(--fs-small)/1 var(--font-display);
+  padding: 12px 20px;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  transition: top var(--t-fast) var(--ease);
+}
+.skip-link:focus {
+  top: var(--sp-4);
+}
+
+/* Brilho azul sutil no canto conforme Design System */
+.ambient-corner-glow {
+  position: fixed;
+  right: -15%;
+  bottom: -35%;
+  width: 65vw;
+  max-width: 900px;
+  aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(101, 119, 245, 0.22), transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Palco 3D Persistente */
+.stage-3d-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+#sculpture-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: pan-y;
+}
+#sculpture-canvas:active {
+  cursor: grabbing;
+}
+
+/* HUD Editorial de Navegação */
+.orbital-hud {
+  position: fixed;
+  bottom: var(--sp-5);
+  right: var(--sp-5);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-2);
+  pointer-events: none;
+}
+.hud-card {
+  pointer-events: auto;
+  background: rgba(27, 30, 35, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.hud-stage-code {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.hud-stage-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.hud-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--line);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.hud-dot:hover {
+  background: var(--td-blue-300);
+  transform: scale(1.25);
+}
+.hud-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px var(--td-blue-glow);
+}
+.hud-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  pointer-events: auto;
+}
+.hud-btn {
+  background: rgba(27, 30, 35, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  font: 600 11px/1 var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.hud-btn:hover, .hud-btn[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+/* HEADER: TEODOR | SPRINT COMERCIAL */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: rgba(21, 23, 27, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-5);
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+.brand-lockup-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.brand-lockup-header svg.brand-mark {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+.brand-title-pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 700 0.875rem/1 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.brand-divider {
+  color: var(--line);
+  font-weight: 400;
+}
+.brand-sub {
+  color: var(--accent);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+.main-nav a {
+  font: 600 0.8125rem/1 var(--font-display);
+  color: var(--text-muted);
+  padding: var(--sp-2) 0;
+  position: relative;
+  transition: color var(--t-fast) var(--ease);
+}
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--text);
+}
+.main-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--accent);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+.mobile-menu-toggle {
+  display: none;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--text);
+  padding: 9px 12px;
+  font: 600 12px/1 var(--font-display);
+  cursor: pointer;
+}
+
+/* Botões e Elementos com Corte (.cut) */
+.cut {
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--cut));
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 600 var(--fs-small)/1.1 var(--font-display);
+  letter-spacing: 0.02em;
+  border: 0;
+  cursor: pointer;
+  padding: 14px 24px;
+  color: var(--on-accent);
+  background: var(--accent);
+  transition: background var(--t-fast) var(--ease), box-shadow var(--t-base) var(--ease);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover {
+  background: var(--td-blue-400);
+  box-shadow: var(--glow);
+}
+.btn:active {
+  background: var(--td-blue-600);
+}
+.btn.btn-compact {
+  padding: 10px 18px;
+  font-size: 0.8125rem;
+}
+.btn.sec {
+  background: rgba(27, 30, 35, 0.85);
+  color: var(--text);
+  border: 1px solid var(--text-muted);
+  border-radius: var(--r-md);
+  clip-path: none;
+}
+.btn.sec:hover {
+  border-color: var(--accent);
+  box-shadow: none;
+  background: var(--surface-2);
+}
+.btn-arrow {
+  font-family: system-ui, sans-serif;
+  font-weight: 700;
+  transition: transform var(--t-fast) var(--ease);
+}
+.btn:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Tag / Eyebrow */
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  flex-wrap: wrap;
+}
+.eyebrow-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.eyebrow-rule {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.label {
+  font: 600 var(--fs-label)/1.2 var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.tag {
+  display: inline-block;
+  font: 600 var(--fs-label)/1 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 12px 7px 16px;
+  background: var(--surface-2);
+  color: var(--td-blue-300);
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+}
+.price-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-2);
+  border: 1px solid rgba(101, 119, 245, 0.45);
+  border-radius: var(--r-md);
+  padding: 10px 16px;
+  margin-bottom: var(--sp-4);
+}
+.price-pill .price-label {
+  font: 600 var(--fs-label)/1 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.price-pill .price-val {
+  font: 800 1.15rem/1 var(--font-display);
+  color: var(--text);
+}
+
+/* Layout Principal e Seções */
+main {
+  position: relative;
+  z-index: 5;
+}
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-5);
+}
+.story-section {
+  min-height: 88vh;
+  padding: 76px 0 42px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.story-section#hero {
+  padding-top: 74px;
+  padding-bottom: 24px;
+}
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 650px) minmax(280px, 1fr);
+  gap: var(--sp-7);
+  align-items: center;
+  width: 100%;
+}
+.story-grid.wide-col {
+  grid-template-columns: minmax(0, 670px) minmax(260px, 1fr);
+}
+.editorial-col {
+  background: rgba(21, 23, 27, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(46, 50, 58, 0.92);
+  border-radius: var(--r-lg);
+  padding: 32px 38px;
+  position: relative;
+}
+.editorial-col.hero-col {
+  padding: 28px 36px;
+}
+
+/* Hero Específico */
+.hero-title {
+  font-size: var(--fs-display);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+  max-width: 24ch;
+}
+.hero-lead {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 8px;
+  max-width: 58ch;
+}
+.hero-sublead {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  max-width: 58ch;
+}
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.microcopy {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  max-width: 54ch;
+}
+
+/* Títulos e Textos das Seções */
+.section-title {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--sp-4);
+  max-width: 24ch;
+}
+.prose-stack {
+  display: grid;
+  gap: 10px;
+  margin-bottom: var(--sp-4);
+}
+.prose-stack p {
+  font-size: 0.975rem;
+  color: var(--text-muted);
+}
+.prose-stack p.contrast-line {
+  color: var(--text);
+  font-weight: 500;
+}
+.staccato-lines {
+  display: grid;
+  gap: 6px;
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--accent);
+  margin: 6px 0;
+}
+.staccato-lines p {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Lista de Dores e Regras (ul.rules do Design System) */
+ul.pain-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+ul.pain-list li {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 12px 16px 12px 34px;
+  position: relative;
+  color: var(--text);
+  font-size: 0.9375rem;
+}
+ul.pain-list li::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Frase de Impacto / Resultado */
+.impact-box {
+  background: var(--surface-1);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  margin-top: var(--sp-4);
+}
+.impact-box p {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.35;
+  max-width: 58ch;
+}
+
+/* 04 — DEMONSTRAÇÃO INTERATIVA DO CRM (Kanban de 5 Etapas) */
+.crm-demo-wrapper {
+  margin: var(--sp-4) 0;
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+}
+.crm-pipeline-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: var(--sp-4);
+}
+.crm-stage-tab {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 10px 8px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.crm-stage-tab:hover {
+  border-color: var(--td-blue-300);
+  color: var(--text);
+}
+.crm-stage-tab.active {
+  background: rgba(101, 119, 245, 0.14);
+  border-color: var(--accent);
+  color: var(--text);
+}
+.crm-stage-tab .st-step {
+  display: block;
+  font: 700 10px/1 var(--font-display);
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.crm-stage-tab .st-title {
+  display: block;
+  font: 600 12px/1.2 var(--font-display);
+  color: inherit;
+}
+.crm-card-inspector {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: var(--sp-4);
+  display: grid;
+  gap: var(--sp-3);
+}
+.crm-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+.crm-lead-title {
+  font: 700 1.05rem/1.2 var(--font-display);
+  color: var(--text);
+}
+.crm-stage-badge {
+  font: 600 11px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px 6px 14px;
+  background: var(--surface-2);
+  color: var(--td-blue-300);
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%, 0 6px);
+}
+.crm-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--line);
+}
+.crm-field-box span.flabel {
+  display: block;
+  font: 600 10px/1 var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.crm-field-box strong.fval {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.crm-disclaimer {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: var(--sp-3);
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--line);
+}
+
+/* 05 — O QUE ESTÁ INCLUÍDO & 06 — COMO FUNCIONA */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: var(--sp-3);
+}
+.deliv-card {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  padding: 16px 18px 16px 20px;
+  position: relative;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.deliv-card:hover {
+  background: var(--surface-2);
+  border-color: rgba(101, 119, 245, 0.45);
+}
+.deliv-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+.deliv-num {
+  font: 700 var(--fs-label)/1 var(--font-display);
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 6px;
+}
+.deliv-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.deliv-card p {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* 07 — INVESTIMENTO (Pricing Box) */
+.pricing-card {
+  background: var(--surface-1);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  margin: var(--sp-4) 0;
+  box-shadow: 0 0 36px rgba(101, 119, 245, 0.12);
+}
+.pricing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--sp-4);
+}
+.pricing-name {
+  font: 700 1.25rem/1.1 var(--font-display);
+  color: var(--text);
+}
+.pricing-amount {
+  font: 800 clamp(2rem, 3.5vw, 2.75rem)/1 var(--font-display);
+  color: var(--accent);
+}
+.pricing-sub {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  display: block;
+  margin-top: 4px;
+}
+ul.rules {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  color: var(--text);
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+ul.rules li {
+  padding-left: var(--sp-4);
+  position: relative;
+  font-size: 0.9375rem;
+}
+ul.rules li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 2px;
+  background: var(--accent);
+}
+.scope-alert {
+  border-left: 3px solid var(--warning);
+  padding: 12px 16px;
+  background: var(--surface-1);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: var(--sp-4);
+}
+.scope-alert strong {
+  color: var(--text);
+  font-family: var(--font-display);
+}
+
+/* 08 — PARA QUEM É (Comparativo de Aderência) */
+.fit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+  margin: var(--sp-4) 0;
+}
+.fit-col {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+}
+.fit-col.fit-yes {
+  border-top: 3px solid var(--success);
+}
+.fit-col.fit-no {
+  border-top: 3px solid var(--text-muted);
+}
+.fit-col h3 {
+  font-size: 1rem;
+  margin-bottom: var(--sp-3);
+}
+.fit-col.fit-no ul.rules li::before {
+  background: var(--text-muted);
+}
+.fit-col.fit-no ul.rules li {
+  color: var(--text-muted);
+}
+
+/* 09 — FAQ Acordeão Acessível */
+.faq-list {
+  display: grid;
+  gap: 8px;
+  margin-top: var(--sp-4);
+}
+.faq-item {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color var(--t-fast) var(--ease);
+}
+.faq-item.open {
+  border-color: var(--accent);
+}
+.faq-trigger {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 13px 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  cursor: pointer;
+  color: var(--text);
+  font: 600 0.95rem/1.3 var(--font-display);
+}
+.faq-trigger:hover {
+  background: var(--surface-2);
+}
+.faq-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  color: var(--accent);
+  display: inline-grid;
+  place-items: center;
+  font-family: monospace;
+  font-size: 15px;
+  flex-shrink: 0;
+  transition: transform var(--t-base) var(--ease), background var(--t-fast) var(--ease);
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.faq-panel {
+  padding: 10px 16px 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(46, 50, 58, 0.5);
+}
+.faq-panel[hidden] {
+  display: none;
+}
+
+/* RODAPÉ */
+.site-footer {
+  position: relative;
+  z-index: 10;
+  background: rgba(21, 23, 27, 0.96);
+  border-top: 1px solid var(--line);
+  padding: var(--sp-8) 0 var(--sp-8);
+  margin-top: var(--sp-7);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--sp-7);
+  padding-bottom: var(--sp-6);
+  border-bottom: 1px solid var(--line);
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.footer-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-lockup svg.t-icon {
+  height: 34px;
+  width: auto;
+}
+.footer-lockup .td-wordmark-svg {
+  height: 22px;
+  width: auto;
+}
+.footer-tagline {
+  font: 600 var(--fs-small)/1.4 var(--font-display);
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-5);
+  align-items: center;
+  justify-content: flex-end;
+}
+.footer-links a,
+.footer-links button.link-btn {
+  font: 500 var(--fs-small)/1.4 var(--font-display);
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--t-fast) var(--ease);
+}
+.footer-links a:hover,
+.footer-links button.link-btn:hover {
+  color: var(--text);
+}
+.footer-bottom {
+  padding-top: var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* Modal Institucional Acessível */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(21, 23, 27, 0.84);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: var(--sp-5);
+}
+.modal-backdrop[hidden] {
+  display: none;
+}
+.modal-card {
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  max-width: 560px;
+  width: 100%;
+  padding: var(--sp-6);
+  position: relative;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--line);
+}
+.modal-close {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: var(--r-sm);
+  padding: 6px 12px;
+  font: 600 var(--fs-small) var(--font-display);
+  cursor: pointer;
+}
+.modal-close:hover {
+  border-color: var(--accent);
+}
+
+/* Responsividade Tablet e Mobile */
+@media (max-width: 1024px) {
+  .story-grid,
+  .story-grid.wide-col {
+    grid-template-columns: 1fr;
+  }
+  .editorial-col {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 68px;
+  }
+  .header-inner {
+    padding: 0 12px;
+    height: 60px;
+    gap: 8px;
+  }
+  .brand-title-pair {
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+  .btn.btn-compact {
+    padding: 8px 11px;
+    font-size: 11px;
+    gap: 5px;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  .main-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--sp-4) var(--sp-5);
+    gap: var(--sp-3);
+    display: none;
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .story-section {
+    padding: 36px 0;
+    min-height: auto;
+  }
+  .story-section#hero {
+    padding-top: 225px;
+    padding-bottom: 36px;
+  }
+  .editorial-col,
+  .editorial-col.hero-col {
+    padding: 22px 18px;
+    background: rgba(21, 23, 27, 0.90);
+  }
+  .crm-pipeline-bar {
+    grid-template-columns: 1fr;
+  }
+  .fit-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+  .footer-links {
+    justify-content: flex-start;
+  }
+  .orbital-hud {
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(27, 30, 35, 0.94);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 6px 10px;
+    pointer-events: auto;
+  }
+  .hud-card {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    backdrop-filter: none;
+  }
+  .hud-stage-name {
+    display: none;
+  }
+  .hud-controls #reset-camera-btn {
+    display: none;
+  }
+  .hud-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-divider,
+  .brand-sub {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+<!-- SVG Oficial Símbolo T (Vector 2.svg) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="teodor-t" viewBox="4 8 684 477">
+    <path fill="#F3F1EC" d="M250.124 484.502V133.972H4L109.742 8H436.084L374.097 95.6326V360.356L250.124 484.502Z"/>
+    <path fill="#6577F5" d="M416.029 119.367L459.785 59.1193L496.248 8L687.677 8L576.466 133.972L532.71 119.367H416.029Z"/>
+  </symbol>
+</svg>
+
+<div class="ambient-corner-glow" aria-hidden="true"></div>
+
+<!-- Palco 3D Persistente Controlado por Scroll -->
+<div class="stage-3d-wrap" aria-hidden="true">
+  <canvas id="sculpture-canvas"></canvas>
+</div>
+
+<!-- HUD Editorial de Navegação -->
+<aside class="orbital-hud" aria-label="Navegação de seções e controles de movimento">
+  <div class="hud-card">
+    <span class="hud-stage-code" id="hud-code">01 / SPRINT</span>
+    <span class="hud-stage-name" id="hud-name">Início</span>
+    <div class="hud-dots" role="tablist" aria-label="Seções da página">
+      <button type="button" class="hud-dot active" data-target-section="hero" aria-label="Ir para Início" title="01 — Sprint Comercial"></button>
+      <button type="button" class="hud-dot" data-target-section="dor" aria-label="Ir para Identificação da Dor" title="02 — Cenário"></button>
+      <button type="button" class="hud-dot" data-target-section="solucao" aria-label="Ir para Solução" title="03 — Solução"></button>
+      <button type="button" class="hud-dot" data-target-section="demonstracao" aria-label="Ir para Demonstração do CRM" title="04 — Demonstração do CRM"></button>
+      <button type="button" class="hud-dot" data-target-section="incluido" aria-label="Ir para O Que Está Incluído" title="05 — Escopo Incluído"></button>
+      <button type="button" class="hud-dot" data-target-section="como-funciona" aria-label="Ir para Como Funciona" title="06 — Como Funciona"></button>
+      <button type="button" class="hud-dot" data-target-section="investimento" aria-label="Ir para Investimento" title="07 — Investimento"></button>
+      <button type="button" class="hud-dot" data-target-section="cta-final" aria-label="Ir para Próximo Passo" title="10 — O Próximo Passo"></button>
+    </div>
+  </div>
+  <div class="hud-controls">
+    <button type="button" class="hud-btn" id="toggle-motion-btn" aria-pressed="false" title="Alternar movimento reduzido">
+      Movimento: Ativo
+    </button>
+    <button type="button" class="hud-btn" id="reset-camera-btn" title="Centralizar visualização">
+      Resetar Ângulo
+    </button>
+  </div>
+</aside>
+
+<!-- HEADER: TEODOR | SPRINT COMERCIAL -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#hero" class="brand-lockup-header" aria-label="Teodor | Sprint Comercial — Ir para o início">
+      <svg class="brand-mark" viewBox="4 8 684 477" aria-hidden="true"><use href="#teodor-t"/></svg>
+      <span class="brand-title-pair">
+        <span>TEODOR</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-sub">SPRINT COMERCIAL</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegação da Sprint Comercial">
+      <a href="#solucao" class="nav-link">Solução</a>
+      <a href="#demonstracao" class="nav-link">CRM</a>
+      <a href="#incluido" class="nav-link">Escopo</a>
+      <a href="#como-funciona" class="nav-link">Etapas</a>
+      <a href="#investimento" class="nav-link">Investimento</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20organizar%20meu%20comercial%20e%20avaliar%20se%20minha%20empresa%20se%20encaixa%20na%20Sprint%20Comercial." target="_blank" rel="noopener noreferrer" class="btn cut btn-compact">
+        <span>Quero organizar meu comercial</span>
+        <span class="btn-arrow" aria-hidden="true">↗</span>
+      </a>
+      <button type="button" class="mobile-menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="main-nav">
+        Menu
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo-principal">
+
+  <!-- 01 — HERO -->
+  <section id="hero" class="story-section" data-stage="0">
+    <div class="wrap story-grid">
+      <div class="editorial-col hero-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">SPRINT COMERCIAL / TEODOR</span>
+          </div>
+        </div>
+        <h1 class="hero-title">Quantos clientes sua empresa perde simplesmente porque ninguém fez o <span class="title-accent">próximo contato?</span></h1>
+        <p class="hero-lead">Um orçamento enviado sem retorno. Uma conversa esquecida. Um interessado que ficou esperando.</p>
+        <p class="hero-sublead">O problema pode não estar na quantidade de pessoas que procuram sua empresa, mas na maneira como essas oportunidades são acompanhadas.</p>
+        <p class="hero-sublead" style="color: var(--text);">Organizamos seu processo comercial em até 72 horas de execução, com um CRM simples, funil de vendas e rotina de follow-up.</p>
+
+        <div class="price-pill">
+          <span class="price-label">Investimento único:</span>
+          <span class="price-val">R$ 1.500</span>
+        </div>
+
+        <div class="cta-group">
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20organizar%20meu%20comercial%20com%20a%20Sprint%20Comercial%20da%20Teodor." target="_blank" rel="noopener noreferrer" class="btn cut">
+            <span>Quero organizar meu comercial</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+          <p class="microcopy">Primeiro, avaliamos se sua operação se encaixa no escopo da Sprint.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 02 — IDENTIFICAÇÃO DA DOR -->
+  <section id="dor" class="story-section" data-stage="1">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">ISSO ACONTECE NA SUA EMPRESA?</span>
+          </div>
+        </div>
+        <h2 class="section-title">O cliente demonstra interesse. <span class="title-accent">E depois?</span></h2>
+        <p style="color: var(--text); font-weight: 500; margin-bottom: var(--sp-2);">Você reconhece alguma dessas situações?</p>
+        <ul class="pain-list">
+          <li>Os contatos chegam pelo WhatsApp, mas ficam espalhados entre conversas.</li>
+          <li>A empresa envia orçamentos e não sabe quais precisam de retorno.</li>
+          <li>Cada pessoa da equipe atende de um jeito.</li>
+          <li>Não existe clareza sobre quem está negociando ou quem desistiu.</li>
+          <li>O gestor precisa perguntar o tempo todo como estão as vendas.</li>
+        </ul>
+        <div class="impact-box">
+          <p>Oportunidade sem acompanhamento é oportunidade em risco.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 03 — SOLUÇÃO -->
+  <section id="solucao" class="story-section" data-stage="2">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <span class="tag">UMA SOLUÇÃO SIMPLES PARA UM PROBLEMA REAL</span>
+        </div>
+        <h2 class="section-title">Chega de depender da <span class="title-accent">memória para vender.</span></h2>
+        <div class="prose-stack">
+          <p class="contrast-line">A Sprint Comercial organiza as informações essenciais para que sua equipe saiba:</p>
+          <div class="staccato-lines">
+            <p>Quem entrou em contato.</p>
+            <p>Em que etapa está cada negociação.</p>
+            <p>Qual é o próximo passo.</p>
+          </div>
+          <p>Em vez de procurar informações em conversas antigas, você passa a contar com uma visão estruturada das oportunidades comerciais.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 04 — DEMONSTRAÇÃO DO CRM -->
+  <section id="demonstracao" class="story-section" data-stage="3">
+    <div class="wrap story-grid wide-col">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <span class="tag">VEJA COMO FUNCIONA</span>
+        </div>
+        <h2 class="section-title">Cada oportunidade <span class="title-accent">no lugar certo.</span></h2>
+        <div class="prose-stack">
+          <p class="contrast-line">Imagine visualizar seus contatos organizados em um funil:</p>
+          <p style="font-family: var(--font-display); font-weight: 600; color: var(--td-blue-300); font-size: 0.925rem;">
+            Novo contato → Em atendimento → Proposta enviada → Follow-up → Venda fechada
+          </p>
+          <p>Cada oportunidade pode ter informações como responsável, valor estimado, observações e próximo contato.</p>
+          <p>Assim, fica mais fácil identificar o que precisa de atenção.</p>
+        </div>
+
+        <!-- Simulador Interativo das 5 Etapas do Funil -->
+        <div class="crm-demo-wrapper" role="region" aria-label="Demonstração interativa do funil comercial">
+          <div class="crm-pipeline-bar" role="tablist" aria-label="Etapas do funil comercial">
+            <button type="button" class="crm-stage-tab active" data-crm-stage="0" role="tab" aria-selected="true">
+              <span class="st-step">ETAPA 01</span>
+              <span class="st-title">Novo contato</span>
+            </button>
+            <button type="button" class="crm-stage-tab" data-crm-stage="1" role="tab" aria-selected="false">
+              <span class="st-step">ETAPA 02</span>
+              <span class="st-title">Em atendimento</span>
+            </button>
+            <button type="button" class="crm-stage-tab" data-crm-stage="2" role="tab" aria-selected="false">
+              <span class="st-step">ETAPA 03</span>
+              <span class="st-title">Proposta enviada</span>
+            </button>
+            <button type="button" class="crm-stage-tab" data-crm-stage="3" role="tab" aria-selected="false">
+              <span class="st-step">ETAPA 04</span>
+              <span class="st-title">Follow-up</span>
+            </button>
+            <button type="button" class="crm-stage-tab" data-crm-stage="4" role="tab" aria-selected="false">
+              <span class="st-step">ETAPA 05</span>
+              <span class="st-title">Venda fechada</span>
+            </button>
+          </div>
+
+          <div class="crm-card-inspector" id="crm-inspector-panel" aria-live="polite">
+            <div class="crm-card-top">
+              <span class="crm-lead-title" id="crm-lead-title">Oportunidade #01 — Solicitação via WhatsApp</span>
+              <span class="crm-stage-badge" id="crm-stage-badge">Novo contato</span>
+            </div>
+            <div class="crm-fields-grid">
+              <div class="crm-field-box">
+                <span class="flabel">Responsável</span>
+                <strong class="fval" id="crm-field-resp">Atendimento 01</strong>
+              </div>
+              <div class="crm-field-box">
+                <span class="flabel">Valor estimado</span>
+                <strong class="fval" id="crm-field-val">Em levantamento</strong>
+              </div>
+              <div class="crm-field-box">
+                <span class="flabel">Observações</span>
+                <strong class="fval" id="crm-field-obs">Cliente pediu orçamento pelo WhatsApp</strong>
+              </div>
+              <div class="crm-field-box">
+                <span class="flabel">Próximo contato</span>
+                <strong class="fval" id="crm-field-next">Hoje — Qualificar demanda</strong>
+              </div>
+            </div>
+          </div>
+
+          <p class="crm-disclaimer">Demonstração ilustrativa. A estrutura final depende da ferramenta utilizada e das necessidades acordadas.</p>
+        </div>
+
+        <div style="margin-top: var(--sp-4);">
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Vi%20a%20demonstra%C3%A7%C3%A3o%20do%20funil%20e%20quero%20uma%20estrutura%20assim%20na%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="btn cut">
+            <span>Quero uma estrutura assim</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 05 — O QUE ESTÁ INCLUÍDO -->
+  <section id="incluido" class="story-section" data-stage="4">
+    <div class="wrap story-grid wide-col">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <span class="tag">ESCOPO CLARO. ENTREGA OBJETIVA.</span>
+        </div>
+        <h2 class="section-title">O que você recebe <span class="title-accent">por R$ 1.500.</span></h2>
+        <div class="deliverables-grid">
+          <article class="deliv-card">
+            <span class="deliv-num">01 / Funil comercial</span>
+            <h3>Funil comercial</h3>
+            <p>Organização de um funil com até cinco etapas para acompanhar oportunidades.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">02 / CRM simplificado</span>
+            <h3>CRM simplificado</h3>
+            <p>Configuração de uma estrutura simples de CRM para até dois usuários, utilizando ferramenta adequada ao escopo.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">03 / Organização inicial de contatos</span>
+            <h3>Organização inicial de contatos</h3>
+            <p>Padronização e organização de até 50 contatos fornecidos pela empresa.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">04 / Mensagens de acompanhamento</span>
+            <h3>Mensagens de acompanhamento</h3>
+            <p>Três modelos de follow-up para ajudar a equipe a retomar conversas comerciais.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">05 / Treinamento</span>
+            <h3>Treinamento</h3>
+            <p>Uma sessão remota de 40 minutos para apresentar a estrutura e orientar a utilização.</p>
+          </article>
+        </div>
+        <div class="impact-box">
+          <p>Resultado da entrega: um processo comercial inicial organizado, com etapas definidas e uma rotina de acompanhamento mais clara.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 06 — COMO FUNCIONA -->
+  <section id="como-funciona" class="story-section" data-stage="5">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">DO DIAGNÓSTICO À ENTREGA</span>
+          </div>
+        </div>
+        <h2 class="section-title">Simples para contratar. <span class="title-accent">Claro para executar.</span></h2>
+        <div class="deliverables-grid">
+          <article class="deliv-card">
+            <span class="deliv-num">Passo 01 — Avaliação</span>
+            <h3>Avaliação</h3>
+            <p>Conversamos brevemente para entender como sua empresa recebe e acompanha oportunidades.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">Passo 02 — Confirmação</span>
+            <h3>Confirmação</h3>
+            <p>Validamos se a demanda se encaixa na Sprint, alinhamos o escopo e confirmamos a contratação.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">Passo 03 — Organização</span>
+            <h3>Organização</h3>
+            <p>Com os acessos e informações necessários, estruturamos o funil, o CRM e os materiais previstos.</p>
+          </article>
+          <article class="deliv-card">
+            <span class="deliv-num">Passo 04 — Entrega</span>
+            <h3>Entrega</h3>
+            <p>Apresentamos a estrutura e realizamos o treinamento remoto.</p>
+          </article>
+        </div>
+        <div class="impact-box">
+          <p>Prazo: até 72 horas de execução após o recebimento dos materiais necessários.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 07 — INVESTIMENTO -->
+  <section id="investimento" class="story-section" data-stage="6">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <span class="tag">UMA DECISÃO SIMPLES PARA ORGANIZAR SUA OPERAÇÃO</span>
+        </div>
+        <h2 class="section-title">Sprint <span class="title-accent">Comercial.</span></h2>
+
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div>
+              <span class="pricing-name">Sprint Comercial</span>
+              <span class="pricing-sub">Pagamento único na contratação.</span>
+            </div>
+            <div class="pricing-amount">R$ 1.500</div>
+          </div>
+
+          <span class="label" style="display:block; margin-bottom: var(--sp-2);">Inclui:</span>
+          <ul class="rules">
+            <li>Funil com até cinco etapas</li>
+            <li>CRM simples para até dois usuários</li>
+            <li>Organização de até 50 contatos</li>
+            <li>Três modelos de follow-up</li>
+            <li>Treinamento remoto de 40 minutos</li>
+          </ul>
+
+          <p style="font-size: var(--fs-small); color: var(--text); font-weight: 500; margin-bottom: var(--sp-4);">
+            Prazo de execução: até 72 horas, após recebimento dos acessos e informações necessários.
+          </p>
+
+          <div class="cta-group">
+            <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20contratar%20a%20Sprint%20Comercial%20%28R%24%201.500%29%20e%20fazer%20a%20avalia%C3%A7%C3%A3o%20de%20escopo." target="_blank" rel="noopener noreferrer" class="btn cut">
+              <span>Quero contratar a Sprint</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            <p class="microcopy">A contratação depende de uma avaliação prévia de adequação ao escopo.</p>
+          </div>
+        </div>
+
+        <div class="scope-alert">
+          <strong>Importante:</strong> o valor não inclui licenças de software, integração com WhatsApp API, automações avançadas, migrações complexas, desenvolvimento personalizado ou gestão comercial recorrente. Eventuais custos de terceiros serão informados antes da contratação.
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 08 — PARA QUEM É -->
+  <section id="para-quem-e" class="story-section" data-stage="6.35">
+    <div class="wrap story-grid wide-col">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">PERFIL DE OPERAÇÃO</span>
+          </div>
+        </div>
+        <h2 class="section-title">Essa solução faz sentido para <span class="title-accent">sua empresa?</span></h2>
+
+        <div class="fit-grid">
+          <div class="fit-col fit-yes">
+            <h3>É indicada para quem:</h3>
+            <ul class="rules">
+              <li>Recebe oportunidades pelo WhatsApp ou outros canais.</li>
+              <li>Precisa organizar contatos e orçamentos.</li>
+              <li>Quer estabelecer um processo inicial de acompanhamento.</li>
+              <li>Tem uma operação pequena e busca uma solução simples.</li>
+            </ul>
+          </div>
+
+          <div class="fit-col fit-no">
+            <h3>Talvez não seja a solução adequada se você precisa de:</h3>
+            <ul class="rules">
+              <li>Integrações complexas entre sistemas.</li>
+              <li>Automações avançadas de atendimento.</li>
+              <li>Migração de grandes bases de dados.</li>
+              <li>Implantação de CRM para equipes maiores.</li>
+              <li>Consultoria comercial contínua.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="impact-box">
+          <p>Nesses casos, podemos avaliar um projeto personalizado.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 09 — FAQ -->
+  <section id="faq" class="story-section" data-stage="6.7">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">FAQ</span>
+          </div>
+        </div>
+        <h2 class="section-title">Perguntas <span class="title-accent">frequentes.</span></h2>
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button type="button" class="faq-trigger" aria-expanded="true" aria-controls="faq-ans-1" id="faq-btn-1">
+              <span>Preciso ter um CRM contratado?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-1" role="region" aria-labelledby="faq-btn-1">
+              <p>Não necessariamente. Avaliamos a ferramenta mais adequada à operação e ao escopo. Licenças ou assinaturas de terceiros não estão incluídas no investimento.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-2" id="faq-btn-2">
+              <span>Vocês vão integrar meu WhatsApp automaticamente?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-2" role="region" aria-labelledby="faq-btn-2" hidden>
+              <p>Não. A Sprint contempla a organização do processo comercial, mas não inclui integração com WhatsApp API ou automações avançadas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-3" id="faq-btn-3">
+              <span>A Sprint garante aumento de vendas?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-3" role="region" aria-labelledby="faq-btn-3" hidden>
+              <p>Não. A entrega é uma estrutura comercial organizada e uma orientação inicial de uso. O resultado comercial depende também da oferta, do atendimento, da demanda e da execução da equipe.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-4" id="faq-btn-4">
+              <span>Minha empresa tem mais de dois atendentes. Posso contratar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-4" role="region" aria-labelledby="faq-btn-4" hidden>
+              <p>Podemos avaliar a necessidade, mas o escopo padrão contempla até dois usuários.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-5" id="faq-btn-5">
+              <span>O prazo de 72 horas começa quando?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-5" role="region" aria-labelledby="faq-btn-5" hidden>
+              <p>Após a confirmação da contratação e o recebimento de todos os acessos e informações necessários para executar o trabalho.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-6" id="faq-btn-6">
+              <span>Existe mensalidade da Teodor?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" id="faq-ans-6" role="region" aria-labelledby="faq-btn-6" hidden>
+              <p>A Sprint é um projeto pontual, com pagamento único. Ferramentas de terceiros podem ter custos recorrentes próprios.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 10 — CTA FINAL -->
+  <section id="cta-final" class="story-section" data-stage="7">
+    <div class="wrap story-grid">
+      <div class="editorial-col">
+        <div class="eyebrow-row">
+          <div class="eyebrow-left">
+            <span class="eyebrow-rule" aria-hidden="true"></span>
+            <span class="label">O PRÓXIMO PASSO</span>
+          </div>
+        </div>
+        <h2 class="section-title">Seus próximos clientes merecem um <span class="title-accent">processo melhor.</span></h2>
+        <div class="prose-stack">
+          <p class="contrast-line">Organize as oportunidades, estabeleça uma rotina de acompanhamento e dê mais clareza à sua operação comercial.</p>
+        </div>
+
+        <div class="price-pill">
+          <span class="price-val">Sprint Comercial — R$ 1.500</span>
+        </div>
+
+        <div class="cta-group" style="margin-bottom: 0;">
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20avaliar%20minha%20empresa%20para%20a%20Sprint%20Comercial%20da%20Teodor." target="_blank" rel="noopener noreferrer" class="btn cut">
+            <span>Quero avaliar minha empresa para a Sprint</span>
+            <span class="btn-arrow" aria-hidden="true">↗</span>
+          </a>
+          <p class="microcopy">Atendimento pelo WhatsApp. Vamos confirmar se a Sprint atende à sua necessidade.</p>
+        </div>
+      </div>
+      <div aria-hidden="true"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- RODAPÉ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-lockup">
+          <svg class="t-icon" viewBox="4 8 684 477" aria-hidden="true"><use href="#teodor-t"/></svg>
+          <svg class="td-wordmark-svg" viewBox="0 0 880 164" role="img" aria-label="Teodor’s — Design, Vídeo e Marketing" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M560.649 0.0251929C555.703 0.139782 549.197 0.483553 546.115 0.827321C542.349 1.20929 540.332 1.47666 539.343 1.74403C539.039 1.82043 538.582 1.89682 538.354 1.93502C537.288 2.04961 534.701 2.69895 532.723 3.31009C530.022 4.18861 528.233 4.95254 525.304 6.51859C521.233 8.69579 517.086 12.9356 514.993 17.0226C514.803 17.4046 514.537 17.9011 514.422 18.1685C513.471 19.8874 512.33 23.1341 511.873 25.2731C511.835 25.5022 511.721 25.9606 511.645 26.2662C511.379 27.3739 510.96 30.2004 510.694 32.3394C510.618 33.0269 510.542 33.8291 510.466 34.0964C510.123 36.1208 509.857 46.0137 510.085 49.6806C510.123 50.5209 510.237 52.0106 510.275 52.9655C510.389 54.5315 510.656 57.2053 510.96 59.1915C511.341 61.7889 512.558 66.6398 513.129 67.9003C513.167 68.0149 513.281 68.2823 513.357 68.5114C513.7 69.5046 513.852 69.7337 514.537 71.1088C516.058 74.2027 517.999 76.7237 520.434 78.9009C521.385 79.7412 522.945 80.8871 524.277 81.7274C524.923 82.1094 526.978 83.1789 527.815 83.5226C528.195 83.7136 528.576 83.8664 528.69 83.9046C529.755 84.4012 532.837 85.3561 534.777 85.8144C536.451 86.1964 536.984 86.311 537.707 86.3874C538.087 86.4256 538.62 86.5402 538.848 86.5784C539.039 86.6166 539.571 86.693 539.99 86.7693C540.408 86.8075 541.283 86.9221 541.892 86.9985C548.094 87.8007 551.784 87.9152 570.389 87.9916C589.336 88.0298 594.358 87.9534 599.609 87.4187C600.142 87.3805 601.283 87.2659 602.12 87.1895C603.528 87.0749 605.088 86.8839 606.381 86.6548C608.36 86.3492 608.816 86.2728 609.044 86.1964C609.197 86.1582 609.577 86.0818 609.805 86.0436C610.833 85.929 613.23 85.2415 615.208 84.554C616.616 84.0574 616.768 84.0192 616.958 83.9046C617.072 83.8664 617.643 83.599 618.29 83.3317C618.899 83.0643 619.469 82.7969 619.507 82.7587C619.583 82.7205 620.002 82.4913 620.42 82.2622C623.426 80.6579 626.774 77.8314 628.41 75.5014C628.638 75.234 628.981 74.7375 629.171 74.4701C629.628 73.8589 630.427 72.6749 630.579 72.4075C630.617 72.2929 630.769 72.0255 630.883 71.8345C631.264 71.1852 631.949 69.8483 632.063 69.5045C632.253 69.0462 632.862 67.4801 632.976 67.251C633.318 66.5252 634.155 63.3931 634.498 61.7507C634.84 59.9554 634.878 59.7263 635.03 58.7331C635.106 58.1984 635.221 57.549 635.259 57.2817C635.297 56.9761 635.373 56.2504 635.449 55.6392C635.525 55.0281 635.601 54.226 635.639 53.844C636.058 50.7883 636.134 40.5516 635.753 36.0063C635.563 33.5999 635.182 30.5442 634.954 29.2455C634.307 25.4258 633.775 23.4014 632.824 20.8423C632.709 20.4603 632.519 20.0019 632.443 19.811C632.329 19.429 631.34 17.3282 631.15 17.0226C631.111 16.9462 630.921 16.5643 630.731 16.2205C629.285 13.5085 626.736 10.491 624.339 8.543C623.502 7.89366 621.562 6.55679 621.41 6.55679C621.372 6.55679 621.219 6.4804 621.067 6.36581C620.611 6.02204 618.062 4.72336 617.148 4.37959C615.703 3.80665 615.36 3.69205 613.344 3.11911C612.012 2.73714 609.121 2.04961 608.284 1.93502C608.093 1.89682 607.637 1.82043 607.294 1.74403C606.267 1.51485 604.859 1.28568 603.68 1.20929C603.071 1.13289 602.348 1.0565 602.044 1.0183C601.778 0.980107 600.826 0.903714 599.989 0.827321C599.114 0.750928 598.011 0.674535 597.554 0.636339C596.755 0.559946 594.435 0.407159 589.831 0.139783C588.233 0.0633905 563.731 -0.0512 560.649 0.0251929ZM582.184 20.1165C582.564 20.1547 583.781 20.2311 584.885 20.2693C585.988 20.3075 587.282 20.3839 587.814 20.3839C590.326 20.6513 591.733 20.7659 592.304 20.8805C592.608 20.9187 593.293 21.0332 593.788 21.1096C595.119 21.3006 596.261 21.5298 596.793 21.6826C599.19 22.3319 599.609 22.5229 601.169 23.2104C604.707 24.8911 607.675 27.8704 608.816 30.8497C608.854 31.0025 609.044 31.4609 609.197 31.8428C609.539 32.6832 610.3 35.5861 610.376 36.3882C610.414 36.6938 610.49 37.2667 610.566 37.6487C610.642 37.9925 610.757 38.9856 610.795 39.7877C610.871 40.5898 610.947 41.5447 611.023 41.9267C611.099 42.6906 611.099 47.236 611.023 48.5347C610.757 51.4758 610.566 52.6217 610.148 54.3406C609.349 57.2817 608.74 58.7713 607.447 60.452C605.582 62.9348 603.718 64.2716 599.837 65.9141C598.81 66.3342 596.451 66.869 593.103 67.4801C592.799 67.5183 591.961 67.6329 591.201 67.6711C590.44 67.7475 589.603 67.8239 589.336 67.8621C589.032 67.9003 587.814 67.9767 586.673 68.0531C585.456 68.1295 583.934 68.2059 583.249 68.2823C581.347 68.4351 567.498 68.4732 564.682 68.3587C555.893 67.9385 551.708 67.4419 547.713 66.296C542.196 64.7682 538.24 61.4833 536.87 57.3199C536.794 57.0907 536.604 56.5559 536.451 56.1358C535.729 54.035 535.424 52.4307 535.082 48.9549C535.006 47.809 535.006 42.3851 535.082 40.8572C535.652 33.1797 537.212 28.9399 540.675 25.9988C542.463 24.4709 544.974 23.0577 546.99 22.4465C548.779 21.8736 548.969 21.8354 551.328 21.3006C553.154 20.9187 557.453 20.4603 560.801 20.3075C562.057 20.2693 563.579 20.1929 564.149 20.1547C567.421 19.9637 580.586 19.9255 582.184 20.1165Z" fill="url(#paint0_linear_203_3210)"/>
+<path d="M413.446 1.11518C388.132 1.15357 377.953 1.23036 377.762 1.30714C377.648 1.34554 377.381 1.57589 377.267 1.76786L377 2.11339V44.3071V86.5393L377.267 86.7696L377.496 87H417.068C441.924 87 457.173 86.9616 458.05 86.8848C458.813 86.8464 460.376 86.7313 461.558 86.6545C462.739 86.5777 463.769 86.5009 463.883 86.4625C463.997 86.4625 464.684 86.3473 465.37 86.2705C469.22 85.8098 474.519 84.5812 476.502 83.6598C476.654 83.6214 476.807 83.5446 476.883 83.5446C477.302 83.5446 480.924 81.7402 482.297 80.8187C482.449 80.742 482.716 80.5884 482.868 80.5116C483.707 80.0509 485.613 78.5536 486.795 77.4402C487.329 76.9411 489.807 74.0232 490.341 73.2554C492.628 69.992 494.572 65.3848 495.411 61.2768C495.449 61.0464 495.564 60.5089 495.678 60.0866C495.983 58.7812 496.25 57.2839 496.25 56.8232C496.25 56.5929 496.288 56.2857 496.326 56.0938C497.165 52.9839 497.241 37.6652 496.44 32.175C496.402 31.7911 496.288 31.1384 496.25 30.7545C496.097 29.2188 495.297 25.4562 494.877 23.9973C494.763 23.6518 494.61 23.1911 494.534 22.9607C494.42 22.692 494.344 22.4616 494.344 22.3848C494.344 22.308 494.267 22.0777 494.153 21.8857C494.039 21.6554 493.962 21.425 493.962 21.3866C493.962 21.2714 492.971 19.083 492.666 18.4304C490.607 14.5527 488.206 11.5964 484.965 9.0625C483.478 7.91071 482.945 7.52679 482.83 7.52679C482.792 7.52679 482.716 7.45 482.64 7.37322C482.297 7.10447 478.904 5.37678 477.531 4.80089C476.654 4.41696 474.748 3.76428 474.062 3.57232C472.613 3.18839 471.508 2.91964 470.631 2.72768C469.792 2.57411 469.182 2.45893 466.552 1.99822C466.094 1.92143 465.179 1.80625 464.569 1.72946C463.921 1.65268 463.082 1.5375 462.663 1.49911C460.49 1.19197 455.687 1 451.874 1C450.197 1.03839 432.889 1.07679 413.446 1.11518ZM450.654 20.8491C457.021 21.3098 459.956 22.0393 463.159 23.9973C466.285 25.8786 468.153 28.067 469.411 31.4071C469.983 32.8277 470.478 34.5554 470.669 35.4C470.745 35.8223 470.86 36.4366 470.936 36.7054C471.05 37.0125 471.088 37.4348 471.088 37.5884C471.088 37.7804 471.165 38.2411 471.241 38.5866C471.508 39.9687 471.736 46.1116 471.584 47.7625C471.508 48.3 471.431 49.2598 471.355 49.8357C471.165 52.2161 470.707 54.2509 470.135 55.7098C470.059 55.9402 469.868 56.4009 469.754 56.708C468.305 60.5857 465.294 63.7339 461.481 65.2696C459.804 65.9607 458.203 66.4214 456.602 66.6518C456.22 66.7286 455.763 66.8054 455.61 66.8438C455.267 66.9589 452.789 67.1893 450.578 67.3428C447.909 67.5348 402.314 67.5732 402.123 67.3812C401.895 67.1125 402.009 20.9643 402.238 20.8107C402.543 20.5804 447.376 20.6188 450.654 20.8875V20.8491Z" fill="url(#paint1_linear_203_3210)"/>
+<path d="M287.23 0.0551784C285.63 0.0933791 283.572 0.16978 282.734 0.246182C281.858 0.284382 280.562 0.360781 279.838 0.398982C274.351 0.628186 267.912 1.3922 264.178 2.27082C261.168 2.95843 258.653 3.79884 256.291 4.83026C252.709 6.39649 251.033 7.42791 248.327 9.60535C245.394 11.9738 242.536 15.9467 240.783 20.1487C240.288 21.2948 240.135 21.715 240.135 21.8296C240.135 21.906 240.059 22.0588 239.983 22.2498C239.831 22.5936 239.107 24.9238 238.84 26.0698C238.459 27.4833 238.078 29.5079 237.849 31.0359C237.811 31.4561 237.697 32.0673 237.659 32.3729C237.011 36.3458 236.782 47.6914 237.24 52.9249C237.316 53.8417 237.43 55.1787 237.468 55.8282C237.544 56.4776 237.659 57.3944 237.735 57.891C237.811 58.3494 237.964 59.228 238.04 59.8392C238.154 60.4504 238.268 61.138 238.306 61.4055C238.345 61.6729 238.421 62.0549 238.497 62.2459C238.573 62.4751 238.611 62.7425 238.611 62.8953C238.611 63.0099 238.687 63.4301 238.802 63.7739C239.335 65.5311 239.983 67.594 240.173 68.2052C240.326 68.549 240.478 68.9692 240.516 69.122C240.707 69.6568 241.812 71.8724 242.422 72.9039C245.241 77.5643 249.852 81.499 254.919 83.5618C255.262 83.7146 255.643 83.8674 255.834 83.9438C255.986 84.0202 256.138 84.0966 256.177 84.0966C256.215 84.0966 256.405 84.173 256.558 84.2494C257.396 84.6315 259.682 85.3191 261.473 85.7775C263.721 86.3123 269.246 87.1527 270.351 87.1527C270.579 87.1527 271.265 87.2291 271.913 87.3055C272.523 87.3819 274.237 87.4965 275.761 87.5729C277.247 87.6493 279.114 87.7639 279.876 87.8403C281.858 87.9931 310.015 88.0695 315.54 87.9167C319.998 87.8403 324.799 87.6111 326.666 87.4583C327.238 87.3819 328.381 87.2673 329.181 87.1909C329.981 87.1145 330.896 86.9999 331.2 86.9617C331.505 86.9235 332.191 86.8089 332.725 86.7325C334.592 86.4651 335.049 86.3887 335.887 86.1977C336.306 86.0831 336.802 86.0067 336.916 86.0067C337.068 86.0067 337.449 85.9303 337.792 85.8157C338.135 85.7393 338.745 85.5483 339.164 85.4337C340.345 85.1281 342.593 84.4023 343.165 84.173C343.317 84.1348 343.66 83.982 343.927 83.8674C348.385 82.1102 352.767 78.8632 355.358 75.5015C356.158 74.4319 357.11 73.0566 357.11 72.942C357.11 72.9038 357.186 72.8274 357.263 72.751C357.415 72.56 358.863 69.695 359.053 69.1984C359.13 69.0074 359.282 68.6254 359.396 68.358C359.511 68.0524 359.663 67.594 359.739 67.3266C359.854 67.0592 359.93 66.8299 359.968 66.7535C360.006 66.6771 360.311 65.7985 360.73 64.3851C361.263 62.7043 361.835 59.9538 362.216 57.6618C362.749 54.1473 363.092 48.57 362.978 44.2152C362.902 39.7075 362.749 36.0402 362.635 35.5818C362.597 35.3526 362.521 34.6268 362.483 34.0156C362.445 33.3662 362.368 32.4493 362.292 31.9909C362.216 31.5325 362.102 30.9213 362.064 30.6157C361.949 29.7753 361.683 28.4383 361.53 27.7889C361.454 27.4833 361.378 27.0631 361.34 26.8339C361.187 25.8024 360.387 22.861 359.968 21.8296C359.854 21.5622 359.777 21.2948 359.777 21.2565C359.777 21.1419 359.625 20.6835 359.168 19.6139C358.863 18.8499 357.529 16.2905 356.92 15.2972C354.786 11.8592 351.509 8.61213 348.27 6.7785C347.394 6.28189 346.975 6.05268 345.984 5.51788C343.851 4.41006 340.955 3.34044 338.44 2.76743C338.135 2.72923 337.754 2.61463 337.564 2.57642C337.411 2.50002 337.068 2.42362 336.878 2.38542C336.649 2.38542 336.116 2.27082 335.62 2.15622C333.563 1.73601 331.124 1.354 329.6 1.2012C328.991 1.163 328.267 1.0484 327.962 1.0102C327.695 0.971995 326.819 0.895593 326.057 0.819192C325.295 0.780991 324.342 0.666389 323.961 0.628188C323.58 0.589988 322.018 0.475383 320.532 0.398982C319.046 0.322581 317.103 0.207982 316.188 0.169782C314.054 0.0169789 291.04 -0.0594236 287.23 0.0551784ZM311.463 20.2251C313.14 20.3015 314.931 20.4543 315.502 20.4925C316.036 20.5307 316.95 20.6453 317.522 20.6835C318.093 20.7599 318.931 20.8363 319.389 20.9127C319.846 20.9891 320.303 21.0655 320.456 21.0655C321.065 21.0655 324.799 21.9824 325.866 22.4026C330.896 24.3508 334.401 27.5215 335.811 31.3415C335.887 31.5325 336.039 31.9909 336.192 32.3347C336.611 33.4426 337.297 36.0402 337.297 36.575C337.297 36.766 337.373 37.1862 337.449 37.5682C337.526 37.9502 337.602 38.8671 337.678 39.5929C337.754 40.3569 337.83 41.2355 337.868 41.5411C337.983 42.3051 338.059 47.042 337.945 48.3026C337.64 52.2373 337.221 54.3383 336.23 56.936C334.973 60.183 332.839 62.7807 330.095 64.3469C329.524 64.6907 327.505 65.6457 327.085 65.7985C323.77 66.9827 321.332 67.4411 315.159 67.976C308.187 68.6254 292.26 68.549 284.258 67.8614C277.971 67.3266 273.17 66.1423 270.16 64.4233C267.341 62.7807 265.207 60.3358 263.988 57.4326C263.149 55.3697 262.959 54.7203 262.425 51.5115C262.006 49.143 262.044 39.9749 262.463 37.721C262.54 37.339 262.616 36.8424 262.616 36.6514C262.616 35.3144 263.873 31.7999 265.131 29.5461C266.807 26.5664 270.198 23.9306 274.047 22.5554C275.685 21.9442 276.219 21.7914 278.047 21.4476C279.648 21.1419 281.972 20.7981 284.106 20.6453C285.02 20.5689 285.935 20.4543 286.087 20.4543C286.239 20.4161 288.107 20.3397 290.202 20.2633C292.298 20.1487 294.089 20.0723 294.203 20.0723C294.774 19.9577 308.758 20.0723 311.463 20.2251Z" fill="url(#paint2_linear_203_3210)"/>
+<path d="M145.896 1.04002C132.56 1.04002 121.593 1.11694 121.479 1.1554C121.402 1.19386 121.249 1.38617 121.173 1.54001C120.982 1.8477 120.982 2.84767 121.02 44.0392C121.058 89.1153 121.02 86.6538 121.44 86.9231C121.517 86.9615 144.482 87 172.529 87C222.586 87 223.503 87 223.733 86.8077L223.962 86.6154L224 77.3848V68.1542L223.771 67.885L223.541 67.6157H185.101C163.97 67.6157 146.622 67.5773 146.545 67.5388C146.431 67.4619 146.354 53.3468 146.507 53.0006C146.545 52.8852 149.87 52.8468 183.267 52.8468C219.873 52.8468 219.988 52.8468 220.179 52.6545C220.293 52.5776 220.37 52.3852 220.37 52.3083C220.37 52.2314 220.408 48.3469 220.408 43.7316C220.446 35.5009 220.446 35.3471 220.293 35.1548C220.102 35.0009 219.95 34.9625 217.772 34.9625C216.511 34.9625 199.927 34.9625 180.974 34.9625L146.469 34.924V27.8857C146.431 22.7319 146.469 20.7704 146.545 20.6935C146.622 20.5781 152.774 20.5397 185.024 20.5397H223.389L223.656 20.3474L223.924 20.1551V10.8091C223.924 0.540026 223.962 1.27078 223.389 1.11694C223.083 1.00156 172.376 0.963098 145.896 1.04002Z" fill="url(#paint3_linear_203_3210)"/>
+<path d="M651.403 1.03849C650.569 1.07699 650.531 1.07699 650.265 1.34646L650 1.65443V44.077V86.538L650.265 86.769L650.531 87H662.662C669.373 87 674.87 86.9615 674.946 86.923C675.211 86.7305 675.249 86.3071 675.287 72.8335C675.363 63.9794 675.401 59.2059 675.438 59.1289C675.552 59.0134 677.562 58.9749 685.106 58.9749H694.659L695.001 59.2829C695.228 59.3984 695.456 59.6294 695.531 59.7064C695.607 59.8218 696.366 60.5533 697.237 61.3232C698.109 62.1316 699.323 63.2865 699.929 63.9024C700.574 64.5184 701.597 65.5192 702.28 66.1737C706.488 70.2542 710.431 74.1423 712.933 76.6061C714.335 77.9919 715.776 79.4163 716.079 79.7243C716.458 80.0322 717.975 81.5336 719.453 83.0349C720.97 84.5748 722.486 86.0761 722.828 86.4226L723.472 87H739.546C750.465 87 755.697 86.9615 755.81 86.923C755.924 86.846 756 86.7305 756 86.615C756 86.3071 745.991 76.2981 742.011 72.6025C741.328 71.9866 740.115 70.7932 739.281 69.9848C738.447 69.1379 736.969 67.752 736.021 66.8666C735.035 65.9427 733.443 64.4799 732.495 63.5175C731.547 62.5936 730.41 61.5157 730.031 61.1692C726.808 58.1665 726.922 58.359 728.325 58.1665C730.865 57.8201 735.793 56.5112 737.651 55.6643C737.84 55.6258 738.257 55.4333 738.599 55.2408C742.504 53.547 746.295 50.1209 748.418 46.3867C748.721 45.8093 748.986 45.3089 748.986 45.2704C748.986 45.2319 749.062 45.0779 749.138 44.9239C749.366 44.385 750.124 42.1907 750.124 42.0367C750.124 41.9597 750.2 41.7287 750.313 41.5363C750.427 41.3053 750.503 41.0358 750.503 40.8818C750.503 40.7663 750.579 40.4584 750.655 40.2659C750.73 40.0349 750.806 39.5345 750.882 39.111C750.958 38.6876 751.034 38.1871 751.072 37.9561C751.185 37.5712 751.337 35.8004 751.564 33.2981C751.64 32.0662 751.64 26.3688 751.564 25.137C751.261 21.5184 750.882 19.863 749.403 15.8979C748.077 12.2408 744.816 8.35273 741.177 6.11996C738.295 4.38764 735.831 3.34825 732.609 2.57833C730.258 2.00089 729.727 1.9239 727.15 1.57744C726.543 1.50045 725.785 1.42345 725.557 1.34646C723.965 1.03849 722.524 1.0385 687.229 1C668.008 1 651.858 1.03849 651.403 1.03849ZM715.624 20.6329C716.838 20.7099 718.127 20.8639 718.468 20.9409C718.809 21.0179 719.264 21.0949 719.529 21.1334C721.311 21.4029 723.055 22.2498 724.155 23.3662C725.368 24.598 725.747 25.291 726.429 27.7932C726.657 28.6401 726.657 32.9517 726.429 34.0295C725.861 36.7243 724.685 38.3411 722.373 39.5345C721.766 39.8809 720.667 40.2659 720.022 40.4199C719.795 40.4584 719.378 40.5739 719.112 40.6509C718.316 40.9203 712.971 40.9588 694.622 40.9973C674.301 41.0358 675.59 41.0358 675.401 40.8433C675.287 40.6893 675.249 39.65 675.249 30.7574V20.7869L675.438 20.6329C675.78 20.402 712.25 20.402 715.624 20.6329Z" fill="url(#paint4_linear_203_3210)"/>
+<path d="M827.663 0.04741C826.709 0.12327 825.87 0.161203 825.755 0.199133C825.641 0.237063 824.458 0.27499 823.084 0.35085C821.749 0.38878 820.375 0.502569 820.031 0.540499C819.726 0.578429 818.772 0.654288 817.933 0.730148C815.948 0.881867 812.323 1.33703 810.072 1.79218C807.782 2.20941 806.332 2.55078 804.767 3.00594C804.424 3.11973 803.89 3.27144 803.661 3.3473C801.486 3.95418 796.868 6.11619 794.808 7.48166C792.327 9.11264 790.076 11.3884 788.397 13.9297C786.947 16.0917 786.336 17.6848 785.535 21.2123C784.848 24.3984 784.81 31.4154 785.497 34.5256C785.878 36.1945 786.145 37.2945 786.26 37.5221C786.336 37.6738 786.412 37.8635 786.412 37.9772C786.412 38.0531 786.489 38.2427 786.565 38.3945C786.603 38.5462 786.718 38.8117 786.794 38.9634C787.595 41.3909 790.228 44.7667 792.823 46.7011C794.044 47.6114 796.525 48.9769 797.479 49.2803C797.631 49.3183 798.051 49.5079 798.471 49.6596C800.455 50.4182 802.44 50.9872 804.691 51.3665C805.302 51.4803 806.141 51.632 806.561 51.7078C806.942 51.7837 807.706 51.8596 808.202 51.9354C808.736 52.0113 809.423 52.0871 809.728 52.1251C810.072 52.163 810.759 52.2389 811.255 52.2768C811.789 52.3147 812.819 52.3906 813.544 52.4664C814.269 52.5423 815.757 52.6561 816.788 52.732C818.734 52.8837 819.841 52.9595 826.137 53.4147C828.083 53.5285 829.838 53.6802 830.067 53.6802C830.258 53.7181 831.365 53.794 832.433 53.8319C833.54 53.9078 834.761 53.9836 835.105 54.0216C835.486 54.0595 836.593 54.1733 837.585 54.2112C838.615 54.2871 839.722 54.3629 840.142 54.4009C840.523 54.4388 841.592 54.5526 842.469 54.5905C844.034 54.6664 845.522 54.8181 847.507 55.1215C848.041 55.1974 848.88 55.3112 849.377 55.3491C849.834 55.425 850.33 55.5008 850.407 55.5388C850.521 55.5767 850.788 55.6525 851.056 55.6905C851.666 55.7663 852.582 56.1456 853.345 56.5629C855.062 57.4732 855.826 58.649 855.94 60.5076C856.169 64.604 853.46 66.6522 847.278 67.1453C846.286 67.2212 845.064 67.3349 844.492 67.4108C843.195 67.5246 821.787 67.4487 819.459 67.297C818.581 67.2591 816.826 67.1832 815.605 67.1074C814.384 67.0694 812.743 66.9556 811.98 66.8798C811.216 66.8039 810.148 66.6901 809.575 66.6522C808.125 66.5005 806.065 66.2729 805.721 66.197C805.569 66.1591 804.844 66.0833 804.08 66.0074C802.783 65.8936 801.676 65.7419 800.303 65.4384C799.921 65.3626 799.425 65.2867 799.158 65.2488C798.891 65.2109 798.395 65.135 798.051 65.0592C797.708 64.9833 797.059 64.8695 796.563 64.7936C795.227 64.5661 794.617 64.4523 793.815 64.2626C793.396 64.1868 792.594 63.9971 792.098 63.8833C791.564 63.7695 790.992 63.6557 790.801 63.6178C790.61 63.542 789.694 63.3523 788.74 63.1627C787.786 62.973 786.87 62.7834 786.679 62.7454C786.26 62.6316 785.802 62.7834 785.687 63.0868C785.687 63.1627 785.649 66.5384 785.649 70.5969C785.649 74.6554 785.573 78.6001 785.535 79.3966C785.306 83.1896 785.306 82.8862 785.535 83.1138C785.725 83.3034 786.87 83.6068 787.901 83.7586C788.091 83.7965 788.549 83.8723 788.893 83.9482C789.847 84.1378 791.526 84.4413 792.327 84.5551C792.709 84.6309 793.357 84.7068 793.739 84.7827C794.426 84.9344 795.418 85.0482 798.28 85.4654C798.853 85.5413 799.921 85.6551 800.608 85.7309C801.333 85.8068 802.249 85.9206 802.669 85.9585C803.623 86.1102 805.302 86.2619 807.019 86.3757C807.706 86.4136 809.156 86.5274 810.148 86.6033C813.391 86.8688 815.872 86.9447 822.55 86.9826C829.571 87.0584 846.743 86.8688 848.461 86.755C853.689 86.2999 856.474 85.9964 856.932 85.8447C857.009 85.8068 857.428 85.7309 857.886 85.655C859.565 85.3895 860.481 85.1999 860.634 85.124C860.71 85.0861 860.977 85.0102 861.206 84.9723C861.969 84.8585 864.106 84.1379 866.32 83.2275C870.441 81.5586 874.6 78.0312 876.661 74.4657C877.233 73.4796 877.997 71.9624 877.997 71.8107C877.997 71.7727 878.073 71.5452 878.187 71.3555C878.531 70.559 878.912 69.4969 879.103 68.7004C879.141 68.4349 879.256 68.0177 879.332 67.866C879.37 67.6763 879.447 67.1074 879.523 66.5763C879.561 66.0833 879.676 65.4005 879.714 65.135C880.095 62.973 880.095 56.3732 879.714 54.5526C879.18 51.8975 879.065 51.2906 878.951 51.101C878.912 51.0251 878.836 50.7217 878.76 50.4182C878.683 50.1527 878.569 49.8114 878.493 49.6976C878.416 49.6217 878.378 49.47 878.378 49.3941C878.378 48.7872 876.585 45.7529 875.173 43.9702C873.456 41.8082 869.83 39.3048 866.968 38.3186C866.663 38.2048 866.091 38.0152 865.747 37.8635C865.366 37.7497 864.793 37.56 864.45 37.4842C862.733 37.029 862.236 36.9152 861.664 36.8394C861.321 36.7635 860.748 36.6497 860.405 36.5359C859.642 36.3842 858.917 36.2704 857.466 36.0428C856.932 35.967 856.36 35.8532 856.207 35.8152C856.054 35.7773 855.406 35.6635 854.795 35.6256C854.146 35.5877 853.612 35.5118 853.574 35.5118C853.421 35.398 846.286 34.7911 842.317 34.5256C841.134 34.4498 839.722 34.3739 839.226 34.298C838.692 34.2601 837.394 34.1843 836.364 34.1084C835.295 34.0705 834.112 33.9567 833.731 33.9188C833.349 33.8808 832.319 33.805 831.441 33.767C830.564 33.7291 829.686 33.6912 829.495 33.6153C829.266 33.5774 828.312 33.5015 827.32 33.4636C826.366 33.3877 824.725 33.2739 823.695 33.1602C822.703 33.0843 820.909 32.8946 819.802 32.7809C813.811 32.2119 811.598 31.3775 810.491 29.3292C809.576 27.6224 809.881 25.0811 811.14 23.488C812.514 21.7812 816.635 20.7571 824.343 20.3019C834.303 19.733 844.339 19.8847 852.811 20.7571C855.94 21.0605 857.695 21.2881 860.405 21.7812C860.977 21.895 861.511 21.9709 861.626 21.9709C861.702 21.9709 862.16 22.0467 862.618 22.1605C863.076 22.2743 863.877 22.426 864.45 22.5398C864.984 22.6536 865.785 22.8432 866.205 22.9191C866.625 23.0329 867.388 23.1846 867.884 23.2984C869.868 23.7536 870.861 23.9811 871.967 24.2846C872.654 24.4742 873.265 24.6259 873.341 24.6259C873.417 24.6259 873.761 24.7018 874.066 24.8156C874.715 25.0052 875.745 25.0811 875.974 24.9294C876.165 24.8156 876.279 16.7365 876.241 9.60573C876.241 5.05415 876.203 5.01622 875.669 4.90243C875.554 4.8645 874.639 4.59899 873.646 4.33348C871.395 3.68868 870.479 3.46109 867.846 2.89215C867.197 2.74043 866.396 2.55078 866.052 2.47492C865.327 2.3232 864.03 2.09562 862.885 1.90598C862.389 1.86805 861.588 1.71632 861.054 1.64046C859.527 1.41288 857.047 1.10945 855.635 0.995656C854.872 0.957726 854.261 0.881865 854.223 0.881865C854.108 0.806005 850.025 0.5405 847.507 0.46464C845.255 0.350851 842.47 0.237061 839.875 0.0853421C838.348 -0.0284474 830.182 -0.0284474 827.663 0.0853421V0.04741Z" fill="url(#paint5_linear_203_3210)"/>
+<path d="M0.626174 1.19238C-0.0586341 1.61561 -0.0205886 0.884571 0.0174563 10.9652C0.0174563 16.5826 0.0555009 20.1609 0.131591 20.2763C0.321815 20.6611 -0.210814 20.6611 22.2737 20.6226C46.3181 20.6226 44.2637 20.5456 44.3017 21.2767C44.3017 21.469 44.3398 36.2822 44.3398 54.1733C44.3398 83.6072 44.3398 86.6853 44.4919 86.8392C44.6441 86.9931 68.6124 87.07 68.8407 86.9161C69.1451 86.6853 69.1451 86.8776 69.1451 53.6732V20.8919L69.4114 20.738C69.6396 20.5841 71.1614 20.5841 91.5155 20.6226H101.5L102.5 19L105.5 14.5L109.5 8.5L115 1.03848H114H113.277C113.163 1.03848 87.8251 1 56.9707 1C1.57729 1 0.930533 1 0.626174 1.19238Z" fill="url(#paint6_linear_203_3210)"/>
+<path d="M114.486 146.132C114.145 146.206 113.652 146.28 113.387 146.355C111.15 146.726 109.406 148.658 109.406 150.738C109.406 153.301 110.695 154.601 114.448 155.752C118.277 156.941 119.263 157.609 119.263 159.058C119.263 161.918 115.055 162.847 111.112 160.915C110.809 160.73 110.43 160.544 110.278 160.47C109.975 160.321 109.785 160.47 109.293 161.324C108.8 162.29 108.838 162.327 110.127 162.921C113.121 164.295 116.723 164.37 119.339 163.07C120.969 162.29 122.106 160.507 121.992 158.984C121.727 156.644 120.665 155.455 117.784 154.378C117.443 154.266 116.988 154.081 116.837 154.006C116.685 153.969 116.42 153.858 116.23 153.821C115.737 153.709 113.766 153.003 113.349 152.743C110.961 151.406 111.681 148.732 114.562 148.212C116.116 147.915 118.239 148.36 119.68 149.215L120.059 149.438L120.286 149.178C120.665 148.769 121.158 147.915 121.158 147.729C121.158 147.543 120.021 146.726 119.718 146.726C119.68 146.726 119.452 146.652 119.225 146.54C118.997 146.429 118.542 146.317 118.201 146.28C117.86 146.206 117.443 146.132 117.254 146.095C116.837 145.946 115.169 145.983 114.486 146.132Z" fill="url(#paint7_linear_203_3210)"/>
+<path d="M438.842 146.125C435.036 146.572 431.757 149.475 431.305 152.825C431.229 153.123 431.154 153.495 431.078 153.607C430.928 153.942 431.003 156.846 431.229 157.478C431.342 157.739 431.493 158.186 431.606 158.483C432.322 160.68 434.018 162.466 436.053 163.248C436.43 163.397 436.844 163.546 437.033 163.62C437.485 163.806 438.616 163.955 439.897 163.993C442.573 164.104 445.286 162.95 446.907 161.052C447.472 160.345 448.339 158.856 448.339 158.483C448.339 158.409 448.414 158.111 448.527 157.888C448.64 157.664 448.716 157.329 448.716 157.143C448.716 156.92 448.791 156.548 448.866 156.25C449.017 155.617 449.055 153.942 448.904 153.533C448.829 153.421 448.753 153.049 448.716 152.751C448.263 149.699 445.362 146.795 442.158 146.274C440.274 145.939 440.425 145.939 438.842 146.125ZM441.894 148.47C444.759 149.289 446.228 151.56 446.266 155.245C446.341 160.382 441.593 163.397 436.958 161.164C435.563 160.493 434.093 158.67 433.943 157.367C433.943 157.181 433.83 156.883 433.792 156.734C433.566 156.324 433.49 154.314 433.679 153.57C434.319 150.852 435.827 149.14 438.126 148.47C438.54 148.358 438.917 148.247 438.955 148.247C439.256 148.135 441.291 148.284 441.894 148.47Z" fill="url(#paint8_linear_203_3210)"/>
+<path d="M814.506 146.055C814.316 146.092 813.859 146.167 813.517 146.241C812.642 146.353 811.311 146.837 810.322 147.321C808.534 148.252 806.708 150.56 806.404 152.384C806.327 152.719 806.213 153.166 806.137 153.426C805.871 154.283 806.023 156.74 806.328 157.782C806.898 159.457 807.012 159.681 807.697 160.611C809.751 163.329 814.202 164.632 818.044 163.701C818.234 163.664 818.652 163.552 818.957 163.478C820.022 163.217 821.049 162.808 821.62 162.436L822 162.212V158.638V155.064L821.772 154.99C821.658 154.953 820.897 154.915 820.098 154.99C819.261 155.027 818.044 155.027 817.321 154.99C815.685 154.915 815.609 154.99 815.609 155.995C815.609 156.926 815.647 156.963 817.663 156.889C819.147 156.814 819.223 156.814 819.299 157C819.489 157.335 819.451 160.872 819.261 161.021C818.805 161.393 816.56 161.952 815.533 161.952C814.81 161.952 813.023 161.542 812.376 161.207C810.017 160.09 808.762 157.931 808.762 154.915C808.762 150.746 811.425 148.177 815.723 148.177C816.789 148.177 817.892 148.401 818.5 148.698C818.614 148.773 818.919 148.922 819.223 149.071C819.489 149.182 819.832 149.406 819.946 149.48C820.288 149.815 820.478 149.704 821.011 148.959C821.277 148.55 821.505 148.177 821.505 148.066C821.505 147.582 818.729 146.204 817.74 146.204C817.587 146.204 817.321 146.167 817.131 146.13C816.636 146.018 814.925 145.944 814.506 146.055Z" fill="url(#paint9_linear_203_3210)"/>
+<path d="M159.267 146.045C159.229 146.083 158.89 146.12 158.512 146.195C154.966 146.605 151.684 149.741 151.232 153.063C151.194 153.324 151.118 153.735 151.081 154.034C150.967 154.78 150.967 155.676 151.118 156.311C151.194 156.609 151.269 156.982 151.269 157.132C151.269 157.729 151.873 159.259 152.476 160.23C154.589 163.515 159.267 164.821 163.907 163.477C165.642 162.955 165.869 162.918 166.284 162.731C167.076 162.358 167.038 162.507 166.963 158.625C166.925 156.423 166.887 155.153 166.812 155.079C166.661 154.892 161.606 155.004 161.304 155.191C161.115 155.303 161.078 155.415 161.078 155.975C161.078 156.87 161.078 156.87 162.813 156.908C163.605 156.908 164.284 156.945 164.322 156.982C164.397 157.057 164.435 159.334 164.397 160.827C164.397 161.051 163.681 161.424 162.851 161.611C162.587 161.648 162.096 161.76 161.794 161.835C160.7 162.059 159.041 161.872 157.682 161.35C154.136 160.043 152.627 155.191 154.589 151.458C155.042 150.562 155.947 149.554 156.551 149.218C157.192 148.882 157.984 148.509 158.097 148.509C158.173 148.509 158.475 148.434 158.776 148.322C159.229 148.173 159.569 148.136 160.55 148.136C161.568 148.136 161.908 148.173 162.323 148.322C162.624 148.434 162.964 148.509 163.039 148.509C163.228 148.509 164.812 149.293 165.076 149.517C165.341 149.741 165.642 149.592 166.095 148.92C166.661 148.061 166.699 147.987 166.435 147.763C165.869 147.24 164.209 146.531 162.813 146.195C162.172 146.045 159.38 145.934 159.267 146.045Z" fill="url(#paint10_linear_203_3210)"/>
+<path d="M54.2106 146.076C53.9114 146.229 53.9488 163.583 54.2106 163.85C54.4724 164.079 61.7274 164.04 62.9241 163.773C66.589 163.011 68.5711 161.332 69.693 158.052C70.0296 157.099 70.1044 153.552 69.8426 152.56C69.7678 152.369 69.693 152.026 69.6182 151.759C69.506 151.302 69.2442 150.729 68.8703 150.081C68.1223 148.708 66.5516 147.335 64.9436 146.725C63.1485 146 62.9615 146 58.3243 146C55.8187 146 54.2854 146.038 54.2106 146.076ZM61.9892 148.212C62.1762 148.288 62.5128 148.365 62.6623 148.365C62.9241 148.365 63.4103 148.555 64.3078 149.013C65.3923 149.547 66.9256 151.569 66.9256 152.446C66.9256 152.56 67.0004 152.903 67.1126 153.209C67.3744 153.971 67.3744 155.802 67.1126 156.679C67.0004 157.023 66.9256 157.366 66.9256 157.442C66.9256 157.671 66.1777 159.158 65.8037 159.616C65.1305 160.493 63.859 161.256 62.5501 161.599C61.6152 161.866 56.978 161.943 56.7162 161.714C56.4918 161.523 56.4544 148.632 56.7162 148.288C56.8284 148.06 56.8658 148.06 59.2218 148.06C61.0917 148.06 61.6526 148.098 61.9892 148.212Z" fill="url(#paint11_linear_203_3210)"/>
+<path d="M84.0755 146.107C84 146.221 84 148.314 84 155.011C84 163.61 84 163.8 84.151 163.914C84.4152 164.029 95.5494 164.029 95.7758 163.914C96.04 163.762 96.0778 162.202 95.8513 162.012C95.7381 161.936 94.5303 161.898 91.1334 161.898C87.963 161.898 86.5288 161.86 86.491 161.784C86.3778 161.631 86.4533 156.076 86.5665 155.924C86.642 155.848 87.4346 155.81 90.4163 155.81C92.8319 155.81 94.2661 155.772 94.3793 155.696C94.6813 155.543 94.6435 153.945 94.3416 153.793C94.1906 153.717 93.2093 153.717 90.4918 153.755C88.4914 153.755 86.7552 153.755 86.642 153.717L86.4533 153.641V150.977C86.4533 149.037 86.4533 148.314 86.5665 148.238C86.642 148.124 87.7366 148.086 90.9447 148.086C93.4735 148.086 95.2852 148.086 95.4361 148.009C95.6626 147.933 95.7003 147.895 95.7003 147.02C95.7003 146.297 95.6626 146.107 95.5494 146.069C95.2474 145.955 84.2265 145.993 84.1132 146.107H84.0755Z" fill="url(#paint12_linear_203_3210)"/>
+<path d="M135.195 146.135C134.935 146.363 134.935 163.602 135.195 163.83C135.369 164.02 137.539 164.058 137.799 163.906C138.059 163.754 138.059 146.211 137.842 146.097C137.539 145.945 135.369 145.983 135.195 146.135Z" fill="url(#paint13_linear_203_3210)"/>
+<path d="M181.172 146.116C180.943 146.345 180.943 163.608 181.172 163.837C181.363 164.027 183.236 164.065 183.389 163.875C183.427 163.799 183.465 161.169 183.465 156.901C183.465 149.051 183.389 149.508 184.306 150.842C185.796 153.052 186.599 154.157 188.089 156.291C189.274 157.93 189.618 158.425 190.611 159.911C191.032 160.483 191.49 161.169 191.643 161.36C191.796 161.588 192.178 162.122 192.484 162.541C192.752 162.998 193.134 163.494 193.325 163.684L193.592 163.989H194.624C195.197 163.989 195.732 163.951 195.847 163.913C196 163.799 196 163.608 196 154.996V146.193L195.809 146.078C195.58 145.964 193.975 146.002 193.822 146.116C193.783 146.193 193.707 148.593 193.707 152.976C193.669 159.264 193.669 159.759 193.516 159.797C193.401 159.797 193.287 159.683 193.172 159.454C192.943 159.035 191.949 157.549 191.185 156.52C190.917 156.139 190.382 155.377 190 154.805C189.618 154.233 189.121 153.509 188.853 153.166C188.586 152.861 187.975 151.985 187.478 151.223C186.981 150.461 186.331 149.508 186.025 149.089C185.758 148.67 185.223 147.907 184.879 147.374C183.885 145.888 184.076 146.002 182.586 146.002C181.592 146.002 181.287 146.002 181.172 146.116Z" fill="url(#paint14_linear_203_3210)"/>
+<path d="M330.124 146.148C329.944 146.262 329.944 146.3 330.233 146.871C330.63 147.861 330.703 148.013 330.992 148.774C331.136 149.155 331.317 149.574 331.353 149.688C331.389 149.764 331.498 150.03 331.57 150.259C331.931 151.287 332.004 151.515 332.112 151.781C332.184 151.934 332.257 152.124 332.257 152.2C332.257 152.276 332.329 152.428 332.401 152.543C332.437 152.657 332.546 152.809 332.582 152.961C332.618 153.114 332.69 153.342 332.763 153.494C332.835 153.647 333.052 154.294 333.305 154.903C333.775 156.235 333.992 156.844 334.245 157.377C334.353 157.605 334.425 157.834 334.425 157.872C334.425 157.948 334.497 158.176 334.606 158.405C334.859 158.976 335.112 159.661 335.329 160.27C335.437 160.574 335.582 161.069 335.69 161.374C336.16 162.668 336.63 163.848 336.702 163.924C336.774 163.962 337.317 164 337.895 164C339.232 164 339.268 164 339.666 162.934C339.81 162.554 339.991 162.097 340.063 161.945C340.28 161.488 340.678 160.422 341.075 159.28C341.292 158.671 341.617 157.796 341.87 157.187C342.087 156.692 342.376 156.007 342.593 155.283C342.919 154.37 343.063 153.989 343.461 152.999C343.641 152.543 343.93 151.896 344.039 151.515C344.183 151.21 344.328 150.83 344.364 150.716C344.653 150.069 345.629 147.366 345.629 147.252C345.629 147.214 345.701 147.023 345.81 146.833C346.171 146.11 346.099 146.072 344.87 146.034C343.605 145.996 343.605 146.034 343.28 146.833C343.172 147.138 343.027 147.594 342.919 147.823C342.846 148.051 342.593 148.698 342.376 149.307C342.196 149.878 341.943 150.525 341.834 150.754C341.726 151.02 341.437 151.819 341.184 152.543C340.714 153.875 340.533 154.37 340.208 155.245C339.919 156.045 339.593 156.996 339.485 157.301C339.449 157.453 339.34 157.681 339.304 157.757C339.124 158.138 338.401 160.156 338.365 160.422C338.22 161.107 337.823 160.536 337.244 158.595C337.136 158.214 336.847 157.491 336.63 156.92C336.449 156.311 336.16 155.55 336.015 155.207C335.871 154.827 335.726 154.446 335.69 154.332C335.654 154.256 335.546 153.951 335.473 153.723C335.22 152.961 334.931 152.238 334.425 150.868C334.028 149.802 333.847 149.345 333.522 148.356C333.305 147.785 333.052 147.061 332.98 146.757C332.835 146.376 332.727 146.186 332.582 146.11C332.221 145.958 330.341 145.958 330.124 146.148Z" fill="url(#paint15_linear_203_3210)"/>
+<path d="M362 146H359V164H362V146Z" fill="url(#paint16_linear_203_3210)"/>
+<path d="M376.132 146.114C375.931 146.305 375.971 163.74 376.172 163.892C376.372 164.082 384.34 164.006 385.461 163.778C388.664 163.169 390.666 161.76 392.027 159.134C393.509 156.317 393.269 152.434 391.507 149.845C390.226 147.98 387.623 146.495 385.141 146.114C384.1 145.962 376.292 145.962 376.132 146.114ZM384.26 148.246C384.54 148.322 384.9 148.398 385.06 148.398C385.221 148.398 385.541 148.474 385.781 148.589C385.981 148.703 386.222 148.779 386.262 148.779C386.542 148.779 387.863 149.693 388.384 150.264C389.585 151.444 390.105 153.005 390.105 155.251C390.145 158.068 388.344 160.618 385.781 161.456C384.18 161.951 379.055 162.103 378.774 161.684C378.534 161.38 378.574 148.513 378.814 148.284C378.974 148.056 383.499 148.018 384.26 148.246Z" fill="url(#paint17_linear_203_3210)"/>
+<path d="M406.15 146.186C406 146.3 406 147.213 406 155.007C406 162.764 406 163.677 406.15 163.829C406.375 164.057 417.613 164.057 417.838 163.829C417.913 163.715 417.988 163.487 417.988 162.992C417.988 161.776 418.475 161.89 413.305 161.89C409.933 161.89 408.81 161.852 408.735 161.776C408.51 161.586 408.547 156.148 408.772 155.958C408.922 155.844 409.334 155.806 412.668 155.806C417.014 155.806 416.677 155.92 416.677 154.703C416.677 154.019 416.639 153.905 416.489 153.829C416.339 153.753 415.178 153.715 412.593 153.791C409.596 153.829 408.922 153.829 408.772 153.715C408.585 153.524 408.51 148.505 408.697 148.239C408.81 148.125 409.484 148.125 413.155 148.125C416.377 148.125 417.501 148.087 417.576 148.011C417.763 147.821 417.726 146.148 417.538 146.072C417.164 145.92 406.3 146.034 406.15 146.186Z" fill="url(#paint18_linear_203_3210)"/>
+<path d="M589.315 146.053C589.2 146.091 589.086 146.205 589.086 146.319C588.971 146.89 588.971 163.6 589.086 163.753C589.238 163.981 590.955 164.057 591.298 163.905L591.527 163.791V157.015C591.489 153.285 591.527 150.202 591.565 150.164C591.718 150.05 591.87 150.24 592.137 150.887C592.519 151.877 593.625 154.389 593.739 154.617C593.853 154.693 593.892 154.846 593.892 154.922C593.892 154.96 594.159 155.569 594.464 156.216C594.769 156.901 595.036 157.434 595.036 157.51C595.036 157.548 595.15 157.815 595.265 158.119C595.417 158.462 595.57 158.804 595.608 158.88C595.646 158.995 595.799 159.375 595.951 159.718C596.447 161.088 596.676 161.659 596.79 161.849C596.867 161.926 596.943 162.154 596.981 162.306C597.096 162.877 597.401 163.029 598.316 163.029C599.537 162.991 599.537 162.991 600.109 161.697C600.452 160.936 601.939 157.472 602.359 156.559C602.588 155.988 602.817 155.417 602.893 155.264C602.969 155.112 603.236 154.503 603.465 153.932C603.732 153.361 604.075 152.562 604.266 152.143C604.495 151.725 604.724 151.116 604.876 150.811C605.067 150.278 605.258 150.126 605.372 150.43C605.41 150.506 605.449 153.514 605.449 157.13C605.449 162.687 605.487 163.715 605.601 163.829C605.792 164.057 607.737 164.057 607.89 163.829C608.08 163.638 608.004 146.205 607.813 146.091C607.737 146.015 607.012 146.015 606.211 146.015L604.724 146.053L604.304 146.814C604.114 147.233 603.694 148.108 603.389 148.756C603.122 149.441 602.74 150.278 602.512 150.697C602.13 151.534 602.13 151.534 601.749 152.486C601.634 152.79 601.367 153.399 601.177 153.78C600.986 154.161 600.872 154.465 600.872 154.541C600.872 154.541 600.757 154.77 600.681 154.998C600.566 155.188 600.185 156.064 599.804 156.939C599.422 157.815 599.079 158.576 599.041 158.614C598.964 158.69 598.888 158.919 598.812 159.147C598.621 159.87 598.43 159.756 597.973 158.614C597.744 158.005 596.943 156.216 596.562 155.302C596.333 154.884 596.18 154.465 596.18 154.427C596.18 154.389 596.066 154.123 595.951 153.818C595.494 152.828 595.417 152.676 595.417 152.562C595.417 152.524 595.265 152.105 595.036 151.648C594.845 151.23 594.654 150.849 594.654 150.811C594.654 150.773 594.502 150.392 594.273 149.974C594.082 149.517 593.815 148.908 593.663 148.565C593.51 148.223 593.243 147.652 593.091 147.271C592.9 146.929 592.747 146.51 592.709 146.396C592.671 146.281 592.519 146.129 592.404 146.091C592.175 145.977 589.62 145.977 589.315 146.053Z" fill="url(#paint19_linear_203_3210)"/>
+<path d="M628.607 146.086C628.528 146.124 628.41 146.314 628.371 146.467C628.213 146.886 627.623 148.258 627.466 148.601C627.387 148.754 627.23 149.211 627.073 149.554C626.876 150.126 626.286 151.422 625.814 152.527C625.538 153.099 625.381 153.48 625.106 154.128C624.87 154.7 624.634 155.272 624.28 156.148C624.162 156.415 623.808 157.215 623.532 157.749C623.336 158.206 623.139 158.626 622.706 159.693C622.51 160.188 622.077 161.218 621.88 161.675C621.801 161.827 621.644 162.209 621.526 162.513C621.408 162.818 621.251 163.161 621.172 163.276C620.779 163.848 621.015 164 622.352 164C623.572 164 623.69 163.962 623.926 163.466C624.437 162.209 624.594 161.827 624.712 161.561C624.791 161.408 624.87 161.218 624.87 161.179C624.87 161.141 624.948 160.989 624.988 160.836C625.066 160.646 625.263 160.227 625.42 159.884C625.538 159.541 625.735 159.236 625.774 159.159C625.853 159.083 626.837 159.045 629.983 159.045C633.13 159.045 634.114 159.083 634.192 159.159C634.232 159.236 634.389 159.502 634.507 159.807C634.743 160.341 634.822 160.608 635.451 162.056C635.648 162.514 635.845 163.047 635.884 163.276C636.081 163.886 636.317 164 637.654 164C639.07 164 639.149 163.924 638.874 163.238C638.756 163.009 638.559 162.552 638.441 162.285C638.126 161.37 637.339 159.464 637.261 159.312C637.143 159.159 636.513 157.673 636.317 157.101C636.238 156.911 636.12 156.682 636.081 156.567C636.041 156.491 635.845 156.11 635.687 155.691C635.53 155.31 635.333 154.89 635.294 154.814C635.137 154.433 634.192 152.184 633.956 151.574C633.878 151.346 633.76 151.155 633.72 151.079C633.681 151.041 633.366 150.317 633.052 149.516C632.698 148.716 632.304 147.763 632.186 147.458C632.029 147.153 631.872 146.734 631.754 146.543C631.675 146.314 631.557 146.124 631.439 146.086C631.242 145.971 628.803 145.971 628.607 146.086ZM630.338 149.097C630.377 149.44 631.557 152.413 631.754 152.756C631.832 152.87 632.108 153.594 632.54 154.7C632.658 154.967 632.816 155.5 632.973 155.843C633.288 156.606 633.288 156.911 633.052 156.987C632.973 157.025 631.557 157.025 629.944 157.025C626.443 157.025 626.482 157.063 626.915 156.148C627.033 155.92 627.23 155.462 627.387 155.119C627.545 154.776 627.702 154.319 627.82 154.09C627.938 153.899 628.017 153.671 628.017 153.594C628.017 153.556 628.095 153.366 628.174 153.213C628.253 153.023 628.371 152.718 628.449 152.527C628.528 152.299 628.764 151.689 629 151.117C629.236 150.583 629.472 149.935 629.551 149.707C629.826 148.868 630.22 148.563 630.338 149.097Z" fill="url(#paint20_linear_203_3210)"/>
+<path d="M652.128 146.114C652.013 146.152 652.013 147.522 652.051 153.303C652.051 157.221 652.051 161.139 652.013 162.052C651.974 164.068 651.936 163.992 653.277 163.992C654.734 163.992 654.58 164.334 654.58 160.531C654.58 156.422 654.35 156.841 656.765 156.841C658.987 156.841 659.026 156.879 660.175 158.933C660.443 159.427 660.52 159.542 661.555 161.215C661.976 161.9 662.474 162.737 662.666 163.079C663.241 163.992 663.241 163.992 664.582 163.992C665.77 163.992 666 163.954 666 163.764C666 163.46 663.394 159.351 661.555 156.689C661.401 156.499 661.593 156.27 662.206 156.08C663.816 155.471 665.004 154.026 665.234 152.428C665.425 151.401 665.31 149.88 665.08 149.309C664.965 149.081 664.85 148.853 664.85 148.815C664.85 148.587 663.969 147.636 663.394 147.293C661.555 146.114 661.018 146 656.075 146C653.967 146 652.204 146.038 652.128 146.114ZM659.792 148.244C659.984 148.32 660.29 148.396 660.443 148.396C660.712 148.396 661.555 148.853 661.861 149.157C662.666 150.07 662.896 151.668 662.321 152.809C661.938 153.57 661.363 154.102 660.558 154.483L659.907 154.825L657.531 154.863C655.96 154.901 655.04 154.863 654.887 154.825L654.657 154.711L654.619 151.668C654.58 148.396 654.619 148.244 654.887 148.13C655.27 147.978 659.332 148.092 659.792 148.244Z" fill="url(#paint21_linear_203_3210)"/>
+<path d="M680.122 146.11C679.937 146.338 679.974 163.652 680.159 163.843C680.344 164.033 682.232 164.071 682.454 163.843C682.528 163.729 682.565 163.158 682.565 160.646V157.602L682.972 157.259C683.195 157.069 683.676 156.651 684.009 156.308C684.342 155.966 684.676 155.699 684.713 155.699C684.824 155.699 685.749 156.879 687.304 159.01C689.266 161.636 691.006 163.881 691.155 163.919C691.229 163.957 691.895 163.995 692.599 163.995C694.005 163.995 694.191 163.919 693.857 163.462C693.746 163.348 693.487 163.006 693.265 162.701C692.599 161.826 691.821 160.798 690.673 159.39C690.081 158.629 689.377 157.754 689.118 157.412C688.896 157.069 688.23 156.232 687.674 155.509C687.045 154.71 686.675 154.139 686.675 153.987C686.675 153.873 686.897 153.53 687.341 153.074C692.969 147.023 693.561 146.338 693.413 146.148C693.302 145.996 691.044 145.958 690.747 146.072C690.636 146.11 690.118 146.681 689.563 147.328C687.156 150.105 686.305 151.019 684.602 152.807C683.121 154.405 682.787 154.71 682.676 154.596C682.602 154.482 682.565 153.644 682.528 150.372C682.528 146.49 682.528 146.262 682.38 146.148C682.158 145.958 680.27 145.958 680.122 146.11Z" fill="url(#paint22_linear_203_3210)"/>
+<path d="M708.151 146.176C708.038 146.29 708 147.203 708 155.003C708 162.764 708.038 163.677 708.151 163.829C708.378 164.057 719.593 164.057 719.819 163.829C720.046 163.639 720.046 162.193 719.895 162.003C719.781 161.927 718.649 161.889 715.363 161.889C711.889 161.889 710.908 161.851 710.794 161.774C710.643 161.66 710.606 161.432 710.643 158.883C710.643 155.687 710.606 155.84 711.587 155.84C718.007 155.801 718.384 155.801 718.535 155.649C718.686 155.497 718.724 154.166 718.611 153.937C718.535 153.823 717.629 153.785 714.684 153.785C711.096 153.747 710.794 153.747 710.681 153.595C710.492 153.329 710.606 148.497 710.832 148.269C710.945 148.117 711.285 148.117 715.175 148.117C718.384 148.117 719.442 148.079 719.517 147.964C719.744 147.812 719.819 146.328 719.63 146.138C719.442 145.948 708.34 145.948 708.151 146.176Z" fill="url(#paint23_linear_203_3210)"/>
+<path d="M732.118 146.114C731.934 146.342 731.971 148.017 732.191 148.093C732.265 148.093 733.478 148.131 734.838 148.131C736.786 148.169 737.374 148.169 737.484 148.283C737.631 148.397 737.631 149.082 737.631 156.085C737.631 161.945 737.668 163.81 737.741 163.886C737.888 164.038 739.799 164.038 740.02 163.886C740.13 163.81 740.167 162.82 740.204 156.085C740.204 150.795 740.241 148.321 740.314 148.245C740.388 148.131 741.012 148.093 743.071 148.093C745.055 148.093 745.79 148.093 745.864 147.979C746.085 147.789 746.011 146.228 745.827 146.114C745.533 145.962 732.265 145.962 732.118 146.114Z" fill="url(#paint24_linear_203_3210)"/>
+<path d="M760.147 146.091C760.029 146.167 760 146.701 760 154.933C760 160.269 760.059 163.737 760.088 163.813C760.176 164.004 761.794 164.08 761.912 163.89C762.029 163.661 762.029 146.167 761.912 146.053C761.765 145.977 760.294 145.977 760.147 146.091Z" fill="url(#paint25_linear_203_3210)"/>
+<path d="M777.156 146.11C777.005 146.186 777.005 146.717 777.005 154.885C777.005 165.067 776.854 163.965 778.251 163.965C779.573 163.965 779.46 164.801 779.46 156.937C779.498 151.276 779.498 150.137 779.611 150.137C779.687 150.137 780.027 150.517 780.329 151.01C780.669 151.466 781.122 152.112 781.348 152.416C781.575 152.72 782.066 153.48 782.482 154.088C783.237 155.151 783.501 155.531 784.257 156.557C785.126 157.773 786.901 160.356 788.298 162.446C789.356 164.041 789.243 163.965 790.64 163.965C791.396 163.965 791.811 163.927 791.887 163.851C791.962 163.775 792 161.686 792 154.999C792 148.313 791.962 146.224 791.887 146.11C791.736 145.958 790.036 145.958 789.809 146.148C789.658 146.224 789.658 146.717 789.658 152.948C789.658 156.633 789.62 159.71 789.583 159.71C789.507 159.786 788.978 159.33 788.978 159.178C788.978 159.102 788.714 158.722 787.656 157.203C787.354 156.823 786.901 156.101 786.561 155.645C786.259 155.189 785.654 154.354 785.277 153.822C784.861 153.252 784.068 152.15 783.501 151.314C782.406 149.719 781.953 149.035 781.462 148.389C781.311 148.161 780.895 147.553 780.555 147.059L779.913 146.148L779.196 146.072C778.176 145.996 777.345 145.996 777.156 146.11Z" fill="url(#paint26_linear_203_3210)"/>
+<path d="M266 159C268.209 159 270 157.209 270 155C270 152.791 268.209 151 266 151C263.791 151 262 152.791 262 155C262 157.209 263.791 159 266 159Z" fill="url(#paint27_linear_203_3210)"/>
+<path d="M518.5 159C520.433 159 522 157.209 522 155C522 152.791 520.433 151 518.5 151C516.567 151 515 152.791 515 155C515 157.209 516.567 159 518.5 159Z" fill="url(#paint28_linear_203_3210)"/>
+<path d="M760.752 2.19079C760.634 2.30526 760.396 2.61053 760.238 2.87763L760 3.37369L760.04 9.86053C760.04 16.3092 760.079 18.1408 760.317 18.3316C760.475 18.5224 761.267 18.5987 763.842 18.675C766.416 18.7895 766.851 18.8658 766.851 19.0947C766.851 19.4 765.307 22.6053 764.99 23.025C764.871 23.1395 763.168 26.3829 762.772 27.2224C762.614 27.604 762.218 28.4434 761.901 29.1303C761.267 30.4276 761.228 30.6947 761.584 30.8855C761.98 31.0382 769.267 31.0382 769.624 30.8855C769.901 30.7329 769.901 30.6947 770.852 29.2447C772.594 26.5355 775.01 23.1013 776.713 20.8882C778.931 17.95 779.446 17.0724 779.564 15.8132C779.604 15.3171 779.881 6.42632 779.881 4.86184C779.881 4.48026 779.921 3.79342 779.96 3.37369C780.04 2.68684 780 2.57237 779.842 2.30526L779.644 2H770.337H761.03L760.752 2.19079Z" fill="#6577F5"/>
+<defs>
+<linearGradient id="paint0_linear_203_3210" x1="490.142" y1="0.712605" x2="490.253" y2="86.1465" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint1_linear_203_3210" x1="358.088" y1="1.69641" x2="358.199" y2="85.1886" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint2_linear_203_3210" x1="217.142" y1="0.712605" x2="217.253" y2="86.1465" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint3_linear_203_3210" x1="104.767" y1="1.69641" x2="104.896" y2="85.1885" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint4_linear_203_3210" x1="633.294" y1="1.69641" x2="633.42" y2="85.1885" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint5_linear_203_3210" x1="770.028" y1="0.704507" x2="770.171" y2="85.1674" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint6_linear_203_3210" x1="-17.9664" y1="1.69641" x2="-17.8496" y2="85.1886" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint7_linear_203_3210" x1="106.951" y1="146.146" x2="106.996" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint8_linear_203_3210" x1="428.163" y1="146.146" x2="428.196" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint9_linear_203_3210" x1="803.478" y1="146.146" x2="803.515" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint10_linear_203_3210" x1="148.478" y1="146.146" x2="148.515" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint11_linear_203_3210" x1="51.4784" y1="146.146" x2="51.5148" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint12_linear_203_3210" x1="82.1088" y1="146.146" x2="82.1574" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint13_linear_203_3210" x1="134.527" y1="146.146" x2="134.722" y2="163.619" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint14_linear_203_3210" x1="178.636" y1="146.146" x2="178.675" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint15_linear_203_3210" x1="327.478" y1="146.146" x2="327.515" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint16_linear_203_3210" x1="358.527" y1="146.146" x2="358.722" y2="163.619" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint17_linear_203_3210" x1="373.321" y1="146.146" x2="373.355" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint18_linear_203_3210" x1="404.109" y1="146.146" x2="404.157" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint19_linear_203_3210" x1="586.006" y1="146.146" x2="586.036" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint20_linear_203_3210" x1="618.163" y1="146.146" x2="618.196" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint21_linear_203_3210" x1="649.794" y1="146.146" x2="649.835" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint22_linear_203_3210" x1="677.794" y1="146.146" x2="677.835" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint23_linear_203_3210" x1="706.109" y1="146.146" x2="706.157" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint24_linear_203_3210" x1="729.794" y1="146.146" x2="729.835" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint25_linear_203_3210" x1="759.685" y1="146.146" x2="759.976" y2="163.616" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint26_linear_203_3210" x1="774.636" y1="146.146" x2="774.675" y2="163.621" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint27_linear_203_3210" x1="260.739" y1="151.065" x2="260.754" y2="158.831" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+<linearGradient id="paint28_linear_203_3210" x1="513.897" y1="151.065" x2="513.913" y2="158.831" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+<stop offset="1" stop-color="#F3F1EC"/>
+</linearGradient>
+</defs>
+</svg>
+        </div>
+        <p class="footer-tagline">Organização comercial com estratégia e simplicidade.</p>
+      </div>
+
+      <ul class="footer-links">
+        <li><button type="button" class="link-btn" id="open-about-teodor-btn">Conheça a Teodor</button></li>
+        <li><button type="button" class="link-btn" id="open-privacy-btn">Política de Privacidade</button></li>
+        <li><button type="button" class="link-btn" id="open-company-btn">Informações da empresa</button></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© Teodor. Todos os direitos reservados.</span>
+      <span>TEODOR</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal Institucional Acessível -->
+<div class="modal-backdrop" id="info-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-title">Informações</h3>
+      <button type="button" class="modal-close" id="close-modal-btn">Fechar</button>
+    </div>
+    <div id="modal-body" class="prose-stack" style="margin-bottom: 0;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ==========================================================================
+   * 1. INTERAÇÕES DE INTERFACE (Menu Mobile, Demonstração CRM, FAQ, Modais)
+   * ========================================================================== */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mainNav = document.getElementById('main-nav');
+  if (mobileMenuBtn && mainNav) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+      mobileMenuBtn.textContent = isOpen ? 'Fechar' : 'Menu';
+    });
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.textContent = 'Menu';
+      });
+    });
+  }
+
+  // Demonstração Interativa do Funil CRM (Seção 04)
+  const crmStagesData = [
+    {
+      title: 'Oportunidade #01 — Solicitação via WhatsApp',
+      badge: 'Novo contato',
+      resp: 'Atendimento 01',
+      val: 'Em levantamento',
+      obs: 'Cliente pediu orçamento pelo WhatsApp',
+      next: 'Hoje — Qualificar demanda'
+    },
+    {
+      title: 'Oportunidade #02 — Dúvidas sobre escopo',
+      badge: 'Em atendimento',
+      resp: 'Atendimento 01',
+      val: 'R$ 3.800 (estimado)',
+      obs: 'Necessidade mapeada durante conversa inicial',
+      next: 'Hoje, 16h — Preparar proposta'
+    },
+    {
+      title: 'Oportunidade #03 — Orçamento comercial enviado',
+      badge: 'Proposta enviada',
+      resp: 'Atendimento 02',
+      val: 'R$ 5.200 (estimado)',
+      obs: 'Proposta PDF encaminhada e confirmada leitura',
+      next: 'Em 24h — Confirmar análise da proposta'
+    },
+    {
+      title: 'Oportunidade #04 — Retomada de conversa',
+      badge: 'Follow-up',
+      resp: 'Atendimento 02',
+      val: 'R$ 4.500 (estimado)',
+      obs: 'Aplicado Modelo 02 de mensagem de acompanhamento',
+      next: 'Quinta-feira, 10h — Retorno agendado'
+    },
+    {
+      title: 'Oportunidade #05 — Aprovação confirmada',
+      badge: 'Venda fechada',
+      resp: 'Atendimento 01',
+      val: 'R$ 4.900 (fechado)',
+      obs: 'Condições aprovadas e início alinhado',
+      next: 'Concluído — Encaminhado para entrega'
+    }
+  ];
+
+  const crmTabs = Array.from(document.querySelectorAll('.crm-stage-tab'));
+  const crmLeadTitle = document.getElementById('crm-lead-title');
+  const crmStageBadge = document.getElementById('crm-stage-badge');
+  const crmFieldResp = document.getElementById('crm-field-resp');
+  const crmFieldVal = document.getElementById('crm-field-val');
+  const crmFieldObs = document.getElementById('crm-field-obs');
+  const crmFieldNext = document.getElementById('crm-field-next');
+
+  crmTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = parseInt(tab.getAttribute('data-crm-stage') || '0', 10);
+      const data = crmStagesData[idx] || crmStagesData[0];
+      crmTabs.forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+        t.setAttribute('aria-selected', String(i === idx));
+      });
+      if (crmLeadTitle) crmLeadTitle.textContent = data.title;
+      if (crmStageBadge) crmStageBadge.textContent = data.badge;
+      if (crmFieldResp) crmFieldResp.textContent = data.resp;
+      if (crmFieldVal) crmFieldVal.textContent = data.val;
+      if (crmFieldObs) crmFieldObs.textContent = data.obs;
+      if (crmFieldNext) crmFieldNext.textContent = data.next;
+    });
+  });
+
+  // Acordeão FAQ
+  document.querySelectorAll('.faq-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const panelId = btn.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      if (item) item.classList.toggle('open', !isExpanded);
+      if (panel) panel.hidden = isExpanded;
+    });
+  });
+
+  // Modais Institucionais (Conheça a Teodor, Política de Privacidade, Informações da empresa)
+  const infoModal = document.getElementById('info-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const openAboutTeodorBtn = document.getElementById('open-about-teodor-btn');
+  const openPrivacyBtn = document.getElementById('open-privacy-btn');
+  const openCompanyBtn = document.getElementById('open-company-btn');
+
+  function openModal(title, html) {
+    if (!infoModal || !modalTitle || !modalBody) return;
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    infoModal.hidden = false;
+    closeModalBtn.focus();
+  }
+  function closeModal() {
+    if (!infoModal) return;
+    infoModal.hidden = true;
+  }
+  if (openAboutTeodorBtn) {
+    openAboutTeodorBtn.addEventListener('click', () => {
+      openModal(
+        'Conheça a Teodor',
+        '<p class="contrast-line">Estratégia. Criatividade. Performance.</p>' +
+        '<p>A Teodor é uma operação de marketing, criatividade, tecnologia e inteligência comercial que conecta diferentes disciplinas para resolver problemas reais de negócio.</p>' +
+        '<p>A Sprint Comercial é nossa solução de entrada para empresas que precisam organizar rapidamente o acompanhamento de contatos e orçamentos.</p>'
+      );
+    });
+  }
+  if (openPrivacyBtn) {
+    openPrivacyBtn.addEventListener('click', () => {
+      openModal(
+        'Política de Privacidade',
+        '<p class="contrast-line">Respeitamos a privacidade e a segurança das informações da sua operação.</p>' +
+        '<p>Os dados e contatos fornecidos para a configuração inicial da Sprint Comercial são utilizados estritamente para a execução do escopo contratado, mantendo total confidencialidade.</p>'
+      );
+    });
+  }
+  if (openCompanyBtn) {
+    openCompanyBtn.addEventListener('click', () => {
+      openModal(
+        'Informações da empresa',
+        '<p class="contrast-line">TEODOR — Organização comercial com estratégia e simplicidade.</p>' +
+        '<p>Sprint Comercial: implantação simplificada de organização comercial e CRM com prazo de execução de até 72 horas após recebimento dos acessos e informações necessários.</p>'
+      );
+    });
+  }
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  if (infoModal) {
+    infoModal.addEventListener('click', (e) => {
+      if (e.target === infoModal) closeModal();
+    });
+  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && infoModal && !infoModal.hidden) closeModal();
+  });
+
+  /* ==========================================================================
+   * 2. ESCULTURA 3D PERSISTENTE DA SPRINT COMERCIAL (16 ANÉIS x 40 VÉRTICES)
+   * Transformações contínuas conectadas à narrativa comercial:
+   *   0 (Hero): Esfera com fluxo convergente de contatos
+   *   1 (Dor): Nuvem dispersa de conversas sem acompanhamento
+   *   2 (Solução): Grade tridimensional organizada em 3 eixos (Quem / Etapa / Próximo passo)
+   *   3 (Demonstração CRM): Funil estruturado em 5 estágios conectados
+   *   4 (O que está incluído): 5 pilares/anéis modulares representando os 5 entregáveis
+   *   5 (Como funciona): 4 marcos orbitais em cadência de 72h
+   *   6 (Investimento / Para quem é / FAQ): Prisma arquitetural de decisão
+   *   7 (CTA Final): Esfera organizada da Teodor
+   * ========================================================================== */
+  const canvas = document.getElementById('sculpture-canvas');
+  const ctx = canvas.getContext('2d');
+  const hudCode = document.getElementById('hud-code');
+  const hudName = document.getElementById('hud-name');
+  const hudDots = Array.from(document.querySelectorAll('.hud-dot'));
+  const toggleMotionBtn = document.getElementById('toggle-motion-btn');
+  const resetCameraBtn = document.getElementById('reset-camera-btn');
+
+  const mediaReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let reducedMotion = mediaReduced.matches;
+  function syncMotionUI() {
+    if (!toggleMotionBtn) return;
+    toggleMotionBtn.setAttribute('aria-pressed', String(reducedMotion));
+    toggleMotionBtn.textContent = reducedMotion ? 'Movimento: Reduzido' : 'Movimento: Ativo';
+  }
+  syncMotionUI();
+  if (toggleMotionBtn) {
+    toggleMotionBtn.addEventListener('click', () => {
+      reducedMotion = !reducedMotion;
+      syncMotionUI();
+    });
+  }
+
+  hudDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetId = dot.getAttribute('data-target-section');
+      const el = document.getElementById(targetId);
+      if (el) el.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+  });
+
+  const RINGS = 16;
+  const SEGS = 40;
+  const N = RINGS * SEGS;
+  const targets = [[], [], [], [], [], [], [], []];
+  const metaRoles = [];
+
+  for (let r = 0; r < RINGS; r++) {
+    const vNorm = r / (RINGS - 1);
+    for (let s = 0; s < SEGS; s++) {
+      const uNorm = s / SEGS;
+      const theta = uNorm * Math.PI * 2;
+      const phi = (r + 0.5) / RINGS * Math.PI;
+      const idx = r * SEGS + s;
+
+      const isAccent = ((r + s) % 3 === 0);
+      metaRoles.push({ r, s, uNorm, vNorm, phi, theta, isAccent });
+
+      // --- STAGE 0: 01 — HERO (Esfera com anel de captura comercial) ---
+      const rad0 = 1.02;
+      const sx = rad0 * Math.sin(phi) * Math.cos(theta);
+      const sy = -rad0 * Math.cos(phi);
+      const sz = rad0 * Math.sin(phi) * Math.sin(theta);
+      targets[0].push({ x: sx, y: sy, z: sz, connectNext: true, connectRing: r < RINGS - 1 });
+
+      // --- STAGE 1: 02 — IDENTIFICAÇÃO DA DOR (Contatos espalhados / dispersos sem conexão) ---
+      const hash1 = Math.sin(idx * 12.9898) * 43758.5453;
+      const hash2 = Math.cos(idx * 78.233) * 23421.631;
+      const frac1 = hash1 - Math.floor(hash1);
+      const frac2 = hash2 - Math.floor(hash2);
+      const scatterR = 0.55 + frac1 * 1.15;
+      const scAng1 = theta + (frac2 - 0.5) * 1.6;
+      const scAng2 = phi + (frac1 - 0.5) * 1.2;
+      const dx = scatterR * Math.sin(scAng2) * Math.cos(scAng1);
+      const dy = -scatterR * Math.cos(scAng2);
+      const dz = scatterR * Math.sin(scAng2) * Math.sin(scAng1);
+      targets[1].push({ x: dx, y: dy, z: dz, connectNext: (s % 5 === 0), connectRing: false });
+
+      // --- STAGE 2: 03 — SOLUÇÃO (Três planos estruturados: Quem / Etapa / Próximo passo) ---
+      const planeIdx = r % 3; // 3 camadas organizadas
+      const planeY = (planeIdx - 1) * 0.62;
+      const rowInPlane = Math.floor(r / 3); // 0..5
+      const gridRad = 0.28 + rowInPlane * 0.18;
+      const gx = gridRad * Math.cos(theta);
+      const gy = planeY + 0.04 * Math.sin(theta * 4);
+      const gz = gridRad * Math.sin(theta);
+      targets[2].push({ x: gx, y: gy, z: gz, connectNext: true, connectRing: (r < 12) });
+
+      // --- STAGE 3: 04 — DEMONSTRAÇÃO DO CRM (Funil Horizontal de 5 Etapas Conectadas) ---
+      let fx, fy, fz, fConnNext = true, fConnRing = false;
+      if (r < 10) {
+        // 5 Etapas do Funil (2 anéis por etapa)
+        const stg5 = Math.floor(r / 2); // 0..4
+        const inner = (r % 2 === 1);
+        fx = -0.96 + stg5 * 0.54;
+        const rad5 = (0.82 - stg5 * 0.12) * (inner ? 0.48 : 1.0);
+        fy = rad5 * Math.sin(theta);
+        fz = rad5 * Math.cos(theta) * 0.78;
+        fConnRing = !inner;
+      } else {
+        // 6 Feixes conectando as 5 etapas
+        const stream = r - 10;
+        const tS = s / (SEGS - 1);
+        fx = -0.96 + tS * 2.16;
+        const env5 = 0.65 - tS * 0.35;
+        const ph5 = (stream / 6) * Math.PI * 2;
+        fy = Math.sin(tS * Math.PI * 4 + ph5) * env5;
+        fz = Math.cos(tS * Math.PI * 4 + ph5) * env5 * 0.75;
+        fConnNext = (s < SEGS - 1);
+        fConnRing = false;
+      }
+      targets[3].push({ x: fx, y: fy, z: fz, connectNext: fConnNext, connectRing: fConnRing });
+
+      // --- STAGE 4: 05 — O QUE ESTÁ INCLUÍDO (5 Módulos Arquiteturais / Colunas) ---
+      let mx, my, mz, mConnNext = true, mConnRing = false;
+      if (r < 15) {
+        const modIdx = Math.floor(r / 3); // 0..4 (5 entregas)
+        const lvl = r % 3;
+        const modHeights = [0.75, 1.05, 1.35, 1.65, 1.95];
+        const mH = modHeights[modIdx];
+        const mCenterX = -1.04 + modIdx * 0.52;
+        const mBaseY = 0.92;
+        my = mBaseY - (lvl / 2) * mH;
+        const hw = 0.16;
+        const sideP = uNorm * 4;
+        const sI = Math.floor(sideP) % 4;
+        const sF = (sideP - Math.floor(sideP)) * 2 - 1;
+        let lx = 0, lz = 0;
+        if (sI === 0) { lx = sF * hw; lz = hw; }
+        else if (sI === 1) { lx = hw; lz = -sF * hw; }
+        else if (sI === 2) { lx = -sF * hw; lz = -hw; }
+        else { lx = -hw; lz = sF * hw; }
+        mx = mCenterX + lx;
+        mz = lz;
+        mConnRing = (lvl < 2);
+      } else {
+        const tL = s / (SEGS - 1);
+        mx = -1.04 + tL * 2.08;
+        my = 0.92 - (0.82 + tL * 1.25);
+        mz = 0.22;
+        mConnNext = (s < SEGS - 1);
+      }
+      targets[4].push({ x: mx, y: my, z: mz, connectNext: mConnNext, connectRing: mConnRing });
+
+      // --- STAGE 5: 06 — COMO FUNCIONA (4 Marcos Arquiteturais em Escada + Anel Orbital de 72h) ---
+      let ox, oy, oz, oConnNext = true, oConnRing = false;
+      if (r < 12) {
+        // 4 Plataformas / Marcos 3D ascendentes (Passo 01 a Passo 04, 3 anéis por passo)
+        const stepIdx = Math.floor(r / 3); // 0..3
+        const ringInStep = r % 3; // 0, 1, 2
+        const stepX = -0.90 + stepIdx * 0.62;
+        const stepY = 0.55 - stepIdx * 0.36 + (ringInStep - 1) * 0.10;
+        const stepRad = 0.28 - ringInStep * 0.04;
+        ox = stepX + stepRad * Math.cos(theta);
+        oy = stepY;
+        oz = stepRad * Math.sin(theta);
+        oConnRing = (ringInStep < 2);
+      } else {
+        // 4 Órbitas inclinadas de 72h envolvendo a jornada de 4 passos
+        const orbIdx = r - 12; // 0..3
+        const orbR = 1.22 + orbIdx * 0.07;
+        const tilt5 = -0.48 + orbIdx * 0.08;
+        const rawOx = orbR * Math.cos(theta);
+        const rawOz = orbR * Math.sin(theta);
+        ox = rawOx;
+        oy = rawOx * Math.sin(tilt5) * 0.65;
+        oz = rawOz;
+        oConnRing = (r < 15);
+      }
+      targets[5].push({ x: ox, y: oy, z: oz, connectNext: oConnNext, connectRing: oConnRing });
+
+      // --- STAGE 6: 07 — INVESTIMENTO & 08/09 (Diamante / Octaedro de Decisão) ---
+      const octLat = (r / (RINGS - 1)) * 2 - 1; // -1 a +1
+      const octProfile = 1.15 * (1 - Math.abs(octLat) * 0.85);
+      // Seção quadrada suavizada girada
+      const dAng = theta + Math.PI * 0.25;
+      const squareFactor = 1 / (Math.abs(Math.cos(dAng)) + Math.abs(Math.sin(dAng)) * 0.65);
+      const px = octProfile * squareFactor * Math.cos(theta) * 0.82;
+      const py = octLat * 1.12;
+      const pz = octProfile * squareFactor * Math.sin(theta) * 0.82;
+      targets[6].push({ x: px, y: py, z: pz, connectNext: true, connectRing: r < RINGS - 1 });
+
+      // --- STAGE 7: 10 — CTA FINAL (Esfera Organizada da Marca) ---
+      targets[7].push({ x: sx * 1.05, y: sy * 1.05, z: sz * 1.05, connectNext: true, connectRing: r < RINGS - 1 });
+    }
+  }
+
+  let currentStageFloat = 0;
+  let targetStageFloat = 0;
+
+  const stageMetadata = [
+    { code: '01 / SPRINT', name: 'Início' },
+    { code: '02 / CENÁRIO', name: 'Diagnóstico' },
+    { code: '03 / SOLUÇÃO', name: 'Organização' },
+    { code: '04 / FUNIL CRM', name: 'Demonstração' },
+    { code: '05 / ESCOPO', name: 'Entregáveis' },
+    { code: '06 / EXECUÇÃO', name: 'Até 72 Horas' },
+    { code: '07 / INVESTIMENTO', name: 'R$ 1.500' },
+    { code: '10 / CONTATO', name: 'Avaliação' }
+  ];
+
+  const sections = Array.from(document.querySelectorAll('.story-section'));
+  const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
+
+  function updateScrollProgress() {
+    const vh = window.innerHeight || 800;
+    const viewportTrigger = vh * 0.46;
+
+    let activeStage = 0;
+    let activeSectionId = 'hero';
+
+    for (let i = 0; i < sections.length; i++) {
+      const sec = sections[i];
+      const rect = sec.getBoundingClientRect();
+      const stg = parseFloat(sec.getAttribute('data-stage') || '0');
+
+      if (rect.top <= viewportTrigger) {
+        activeStage = stg;
+        activeSectionId = sec.id;
+        if (i + 1 < sections.length) {
+          const nextSec = sections[i + 1];
+          const nextStg = parseFloat(nextSec.getAttribute('data-stage') || String(stg));
+          const nextRect = nextSec.getBoundingClientRect();
+          const span = Math.max(1, nextRect.top - rect.top);
+          const rawP = Math.max(0, Math.min(1, (viewportTrigger - rect.top) / span));
+          const plateauP = Math.max(0, Math.min(1, (rawP - 0.25) / 0.55));
+          const smooth = plateauP * plateauP * (3 - 2 * plateauP);
+          activeStage = stg + (nextStg - stg) * smooth;
+        }
+      }
+    }
+
+    targetStageFloat = Math.max(0, Math.min(7, activeStage));
+
+    const roundedStage = Math.min(7, Math.max(0, Math.round(targetStageFloat)));
+    const meta = stageMetadata[roundedStage] || stageMetadata[0];
+    if (hudCode) hudCode.textContent = meta.code;
+    if (hudName) hudName.textContent = meta.name;
+
+    hudDots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === roundedStage);
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      link.classList.toggle('active', href === '#' + activeSectionId);
+    });
+  }
+
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    updateScrollProgress();
+  });
+
+  let dragRotX = 0.0;
+  let dragRotY = 0.0;
+  let targetDragRotX = 0.0;
+  let targetDragRotY = 0.0;
+  let isDragging = false;
+  let lastPtrX = 0;
+  let lastPtrY = 0;
+
+  canvas.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    lastPtrX = e.clientX;
+    lastPtrY = e.clientY;
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - lastPtrX;
+    const dy = e.clientY - lastPtrY;
+    lastPtrX = e.clientX;
+    lastPtrY = e.clientY;
+    targetDragRotY += dx * 0.0065;
+    targetDragRotX = Math.max(-0.85, Math.min(0.85, targetDragRotX + dy * 0.0065));
+  });
+  window.addEventListener('pointerup', () => {
+    isDragging = false;
+  });
+
+  if (resetCameraBtn) {
+    resetCameraBtn.addEventListener('click', () => {
+      targetDragRotX = 0.0;
+      targetDragRotY = 0.0;
+    });
+  }
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  function resizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resizeCanvas();
+  updateScrollProgress();
+
+  let time = 0;
+  const projected = new Array(N);
+
+  function renderFrame() {
+    const dt = reducedMotion ? 0 : 0.016;
+    time += dt;
+
+    const lerpSpeed = reducedMotion ? 1.0 : 0.14;
+    currentStageFloat += (targetStageFloat - currentStageFloat) * lerpSpeed;
+    dragRotX += (targetDragRotX - dragRotX) * 0.12;
+    dragRotY += (targetDragRotY - dragRotY) * 0.12;
+
+    const stageLow = Math.max(0, Math.min(6, Math.floor(currentStageFloat)));
+    const stageHigh = Math.min(7, stageLow + 1);
+    const blend = currentStageFloat - stageLow;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const isMobile = width <= 768;
+    const isTablet = width > 768 && width <= 1024;
+    const centerX = isMobile ? width * 0.50 : (isTablet ? width * 0.74 : width * 0.77);
+    const centerY = isMobile ? 140 : height * 0.50;
+    const baseRadius = isMobile
+      ? Math.min(width * 0.21, 76)
+      : Math.min(width * 0.165, height * 0.26);
+
+    const haloGrad = ctx.createRadialGradient(
+      centerX, centerY, baseRadius * 0.05,
+      centerX, centerY, baseRadius * 1.85
+    );
+    haloGrad.addColorStop(0, 'rgba(101, 119, 245, 0.25)');
+    haloGrad.addColorStop(0.52, 'rgba(101, 119, 245, 0.08)');
+    haloGrad.addColorStop(1, 'rgba(21, 23, 27, 0)');
+    ctx.fillStyle = haloGrad;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, baseRadius * 1.85, 0, Math.PI * 2);
+    ctx.fill();
+
+    const distFromDirectional = Math.min(
+      Math.abs(currentStageFloat - 3),
+      Math.abs(currentStageFloat - 4),
+      Math.abs(currentStageFloat - 5)
+    );
+    const freeSpinFactor = Math.max(0, Math.min(1, distFromDirectional - 0.25));
+
+    const spinYaw = reducedMotion ? -0.22 : time * 0.32;
+    const fixedYaw = -0.20 + (reducedMotion ? 0 : Math.sin(time * 0.85) * 0.14);
+    const rotY = dragRotY + spinYaw * freeSpinFactor + fixedYaw * (1 - freeSpinFactor);
+    const rotX = dragRotX + 0.16 + (reducedMotion ? 0 : Math.cos(time * 0.65) * 0.05);
+
+    const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+    const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+
+    const fov = 3.6;
+
+    for (let i = 0; i < N; i++) {
+      const pA = targets[stageLow][i];
+      const pB = targets[stageHigh][i];
+      const role = metaRoles[i];
+
+      let x = pA.x + (pB.x - pA.x) * blend;
+      let y = pA.y + (pB.y - pA.y) * blend;
+      let z = pA.z + (pB.z - pA.z) * blend;
+
+      if (!reducedMotion && freeSpinFactor > 0.05) {
+        const wave = Math.sin(role.phi * 5 + time * 2.1) * Math.cos(role.theta * 4 - time * 1.6) * 0.08 * freeSpinFactor;
+        x += x * wave;
+        y += y * wave;
+        z += z * wave;
+      }
+
+      const x1 = x * cosY - z * sinY;
+      const z1 = z * cosY + x * sinY;
+      const y2 = y * cosX - z1 * sinX;
+      const z2 = z1 * cosX + y * sinX;
+
+      const persp = fov / (fov + z2 + 1.85);
+      const sx = centerX + x1 * baseRadius * persp * 1.42;
+      const sy = centerY + y2 * baseRadius * persp * 1.42;
+
+      projected[i] = {
+        sx,
+        sy,
+        z: z2,
+        persp,
+        isAccent: role.isAccent,
+        r: role.r,
+        s: role.s,
+        connectNext: (blend < 0.5 ? pA.connectNext : pB.connectNext),
+        connectRing: (blend < 0.5 ? pA.connectRing : pB.connectRing)
+      };
+    }
+
+    ctx.lineWidth = isMobile ? 0.95 : 1.15;
+    for (let r = 0; r < RINGS; r++) {
+      const baseIdx = r * SEGS;
+      for (let s = 0; s < SEGS; s++) {
+        const i = baseIdx + s;
+        const a = projected[i];
+
+        if (a.connectNext) {
+          const nextS = (s + 1) % SEGS;
+          const b = projected[baseIdx + nextS];
+          const depthAlpha = Math.max(0.14, Math.min(0.65, (1.28 - (a.z + b.z) * 0.5) * 0.36));
+          ctx.strokeStyle = (r % 2 === 0)
+            ? `rgba(101, 119, 245, ${depthAlpha.toFixed(3)})`
+            : `rgba(243, 241, 236, ${(depthAlpha * 0.58).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.sx, a.sy);
+          ctx.lineTo(b.sx, b.sy);
+          ctx.stroke();
+        }
+
+        if (a.connectRing && (s % 4 === 0) && (r + 1 < RINGS)) {
+          const c = projected[(r + 1) * SEGS + s];
+          const ribAlpha = Math.max(0.08, Math.min(0.42, (1.25 - (a.z + c.z) * 0.5) * 0.24));
+          ctx.strokeStyle = `rgba(138, 141, 149, ${ribAlpha.toFixed(3)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.sx, a.sy);
+          ctx.lineTo(c.sx, c.sy);
+          ctx.stroke();
+        }
+      }
+    }
+
+    const sorted = projected.slice().sort((a, b) => b.z - a.z);
+    for (let i = 0; i < sorted.length; i++) {
+      const pt = sorted[i];
+      const depthAlpha = Math.max(0.22, Math.min(0.98, (1.40 - pt.z) * 0.54));
+      const rad = Math.max(1.2, (pt.isAccent ? 3.0 : 1.9) * pt.persp * (isMobile ? 0.85 : 1.0));
+
+      ctx.fillStyle = pt.isAccent
+        ? `rgba(101, 119, 245, ${depthAlpha.toFixed(3)})`
+        : `rgba(243, 241, 236, ${(depthAlpha * 0.88).toFixed(3)})`;
+
+      ctx.beginPath();
+      ctx.arc(pt.sx, pt.sy, rad, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (!reducedMotion) {
+      requestAnimationFrame(renderFrame);
+    }
+  }
+
+  requestAnimationFrame(renderFrame);
+  window.addEventListener('scroll', () => {
+    if (reducedMotion) requestAnimationFrame(renderFrame);
+  }, { passive: true });
+  window.addEventListener('pointermove', () => {
+    if (reducedMotion && isDragging) requestAnimationFrame(renderFrame);
+  });
+})();
+</script>
+</body>
+</html>
